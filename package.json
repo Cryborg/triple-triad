@@ -1,0 +1,11 @@
+{
+  "name": "triple-triad-v0.1",
+  "version": "0.1.0",
+  "description": "Triple Triad card game inspired by Final Fantasy VIII",
+  "main": "main.js",
+  "scripts": {
+    "start": "node main.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
