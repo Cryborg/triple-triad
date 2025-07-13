@@ -23,9 +23,24 @@ class Game {
         this.setupPlayerCollections();
         this.distributeCards();
         this.currentPlayer = Math.random() < 0.5 ? 'BLUE' : 'RED';
-        console.log(`\n=== Triple Triad v0.6 ===`);
-        console.log(`Rules: Open=${this.rules.open}, Random=${this.rules.random}, Elemental=${this.rules.elemental}, Same=${this.rules.same}, Plus=${this.rules.plus}, Same Wall=${this.rules.sameWall}, Combo=${this.rules.combo}, Sudden Death=${this.rules.suddenDeath}, Trade=${this.rules.tradeRule}`);
+        console.log(`\n=== Triple Triad v0.7 ===`);
+        console.log(`Active Rules: ${this.formatActiveRules()}`);
+        console.log(`Trade Rule: ${this.rules.tradeRule}`);
         console.log(`${this.currentPlayer} starts the game!\n`);
+    }
+
+    formatActiveRules() {
+        const activeRules = [];
+        if (this.rules.open) activeRules.push('Open');
+        if (this.rules.random) activeRules.push('Random');
+        if (this.rules.elemental) activeRules.push('Elemental');
+        if (this.rules.same) activeRules.push('Same');
+        if (this.rules.plus) activeRules.push('Plus');
+        if (this.rules.sameWall) activeRules.push('Same Wall');
+        if (this.rules.combo) activeRules.push('Combo');
+        if (this.rules.suddenDeath) activeRules.push('Sudden Death');
+        
+        return activeRules.length > 0 ? activeRules.join(', ') : 'Basic rules only';
     }
 
     setupPlayerCollections() {
@@ -113,21 +128,23 @@ class Game {
         }
         
         if (player.isAI) {
-            console.log(`\n${this.currentPlayer}'s turn (AI):`);
+            console.log(`\n=== Turn ${this.turnCount + 1}/9 - ${this.currentPlayer} (AI) ===`);
             const opponentHand = this.rules.open ? opponent.hand : null;
             const move = player.getSmartMove(this.board, opponentHand, this.rules.elemental);
             
             if (move) {
                 const card = player.getCard(move.cardIndex);
-                console.log(`AI plays ${card.toString()} at position (${move.row}, ${move.col})`);
+                console.log(`🤖 AI places ${card.toString()} at position (${move.row}, ${move.col})`);
                 this.makeMove(move.cardIndex, move.row, move.col);
             }
         } else {
+            console.log(`\n=== Turn ${this.turnCount + 1}/9 - ${this.currentPlayer} (Human) ===`);
             this.board.display(this.rules.elemental);
             if (!this.rules.open) {
+                console.log(`\n${this.currentPlayer} has ${player.hand.length} cards remaining:`);
                 player.displayHand();
             }
-            console.log(`\n${this.currentPlayer}'s turn:`);
+            console.log(`Choose your move:`);
             return false;
         }
         
@@ -186,7 +203,8 @@ class Game {
             const basicCaptures = this.getBasicCaptures(placedCard, row, col);
             basicCaptures.forEach(card => cardsFlippedThisTurn.add(card));
             if (basicCaptures.length > 0) {
-                console.log(`${placedCard.owner} captured ${basicCaptures.length} card(s)!`);
+                const captureDesc = basicCaptures.map(card => card.toString()).join(', ');
+                console.log(`⚔️  ${placedCard.owner} captured ${basicCaptures.length} card(s) by Basic rule: ${captureDesc}`);
             }
         }
         
@@ -343,7 +361,7 @@ class Game {
         }
         
         if (comboCount > 0) {
-            console.log(`${currentOwner} captured ${comboCount} additional card(s) by Combo!`);
+            console.log(`🔗 ${currentOwner} captured ${comboCount} additional card(s) by Combo chain!`);
         }
     }
 
@@ -372,7 +390,10 @@ class Game {
         if (this.rules.same) ruleTypes.push('Same');
         if (this.rules.plus) ruleTypes.push('Plus');
         
-        console.log(`${placedCard.owner} captured ${captures.length} card(s) by ${ruleTypes.join('/')}!`);
+        if (captures.length > 0) {
+            const captureDesc = captures.map(card => card.toString()).join(', ');
+            console.log(`⚡ ${placedCard.owner} captured ${captures.length} card(s) by ${ruleTypes.join('/')}: ${captureDesc}`);
+        }
     }
 
     getBasicCaptures(placedCard, row, col) {

@@ -12,9 +12,19 @@ class Board {
         return this.isValidPosition(row, col) && this.grid[row][col] === null;
     }
 
+    isPositionOccupied(row, col) {
+        return this.isValidPosition(row, col) && this.grid[row][col] !== null;
+    }
+
     placeCard(card, row, col) {
-        if (!this.isPositionEmpty(row, col)) {
-            throw new Error(`Position (${row}, ${col}) is not empty or invalid`);
+        if (!this.isValidPosition(row, col)) {
+            throw new Error(`Position (${row}, ${col}) is out of bounds`);
+        }
+        if (this.isPositionOccupied(row, col)) {
+            throw new Error(`Position (${row}, ${col}) is already occupied`);
+        }
+        if (!card) {
+            throw new Error('Cannot place null or undefined card');
         }
         this.grid[row][col] = card;
     }
@@ -131,8 +141,11 @@ class Board {
                 const element = this.elementalSquares[row][col];
                 
                 if (card) {
-                    line += ` ${card.owner[0]} `;
+                    // Display card with owner color: P1 cards in blue, P2 cards in red
+                    const ownerSymbol = card.owner === 'Player1' ? '\x1b[34mP1\x1b[0m' : '\x1b[31mP2\x1b[0m';
+                    line += ownerSymbol;
                 } else if (showElements && element !== 'None') {
+                    // Display elemental square
                     line += ` ${element[0]} `;
                 } else {
                     line += '   ';
@@ -145,10 +158,14 @@ class Board {
                 console.log(' ├───┼───┼───┤');
             }
         }
-        console.log(' └───┴───┴───┘\n');
+        console.log(' └───┴───┴───┘');
+        
+        // Always show the card count
+        const counts = this.countCardsByOwner();
+        console.log(`\nScore: \x1b[34mPlayer1\x1b[0m: ${counts['Player1'] || 0} - \x1b[31mPlayer2\x1b[0m: ${counts['Player2'] || 0}`);
         
         if (showElements) {
-            console.log('Elements: F=Fire, I=Ice, T=Thunder, E=Earth, P=Poison, W=Wind/Water, H=Holy');
+            console.log('\nElements: F=Fire, I=Ice, T=Thunder, E=Earth, P=Poison, W=Wind/Water, H=Holy');
         }
     }
 }

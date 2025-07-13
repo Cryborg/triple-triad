@@ -11,15 +11,32 @@ class Player {
     }
 
     addCardToCollection(card) {
+        if (!card) {
+            throw new Error('Cannot add null or undefined card to collection');
+        }
+        
+        // Prevent duplicates
+        if (this.collection.includes(card)) {
+            console.warn(`Card ${card.toString()} is already in ${this.id}'s collection`);
+            return false;
+        }
+        
         this.collection.push(card);
+        return true;
     }
 
     removeCardFromCollection(card) {
+        if (!card) {
+            throw new Error('Cannot remove null or undefined card from collection');
+        }
+        
         const index = this.collection.indexOf(card);
         if (index > -1) {
             this.collection.splice(index, 1);
             return true;
         }
+        
+        console.warn(`Card ${card.toString()} not found in ${this.id}'s collection`);
         return false;
     }
 
@@ -96,9 +113,10 @@ class Player {
             return null;
         }
 
-        let bestMove = null;
+        let bestCaptureMove = null;
         let maxCaptures = -1;
 
+        // Priority 1: Look for capture moves
         for (let cardIndex = 0; cardIndex < this.hand.length; cardIndex++) {
             const card = this.hand[cardIndex];
             
@@ -107,7 +125,7 @@ class Player {
                 
                 if (captures > maxCaptures) {
                     maxCaptures = captures;
-                    bestMove = {
+                    bestCaptureMove = {
                         cardIndex,
                         row: position.row,
                         col: position.col
@@ -116,7 +134,39 @@ class Player {
             }
         }
 
-        return bestMove || this.getRandomMove(board);
+        // If we found a capture move, return it
+        if (bestCaptureMove && maxCaptures > 0) {
+            return bestCaptureMove;
+        }
+
+        // Priority 2: Look for blocking moves (prevent opponent captures)
+        let bestBlockMove = null;
+        let maxBlocks = -1;
+
+        for (let cardIndex = 0; cardIndex < this.hand.length; cardIndex++) {
+            const card = this.hand[cardIndex];
+            
+            for (const position of emptyPositions) {
+                const blocks = this.countPotentialBlocks(board, card, position.row, position.col, elementalRuleActive);
+                
+                if (blocks > maxBlocks) {
+                    maxBlocks = blocks;
+                    bestBlockMove = {
+                        cardIndex,
+                        row: position.row,
+                        col: position.col
+                    };
+                }
+            }
+        }
+
+        // If we found a blocking move, return it
+        if (bestBlockMove && maxBlocks > 0) {
+            return bestBlockMove;
+        }
+
+        // Priority 3: Random move as last resort
+        return this.getRandomMove(board);
     }
 
     countPotentialCaptures(board, card, row, col, elementalRuleActive = false) {
@@ -147,8 +197,8 @@ class Player {
                     cardRank = card.getEffectiveRank(side, placedSquareElement, true);
                     adjacentRank = adjacentCard.getEffectiveRank(cardSide, adjacentSquareElement, true);
                 } else {
-                    cardRank = card.getRank(side);
-                    adjacentRank = adjacentCard.getRank(cardSide);
+                    cardRank = card.getOriginalRank(side);
+                    adjacentRank = adjacentCard.getOriginalRank(cardSide);
                 }
                 
                 if (cardRank > adjacentRank) {
@@ -158,6 +208,34 @@ class Player {
         }
 
         return captures;
+    }
+
+    countPotentialBlocks(board, card, row, col, elementalRuleActive = false) {
+        // Simple blocking heuristic: count adjacent opponent cards that would be threatened
+        let blocks = 0;
+        const adjacent = board.getAdjacentCards(row, col);
+        const adjacentPositions = {
+            top: { row: row - 1, col },
+            right: { row, col: col + 1 },
+            bottom: { row: row + 1, col },
+            left: { row, col: col - 1 }
+        };
+
+        const comparisons = [
+            { side: 'top', adjacentCard: adjacent.top },
+            { side: 'right', adjacentCard: adjacent.right },
+            { side: 'bottom', adjacentCard: adjacent.bottom },
+            { side: 'left', adjacentCard: adjacent.left }
+        ];
+
+        for (const { side, adjacentCard } of comparisons) {
+            if (adjacentCard && adjacentCard.owner === this.id) {
+                // This is our card that could be protected by placing here
+                blocks++;
+            }
+        }
+        
+        return blocks;
     }
 }
 
