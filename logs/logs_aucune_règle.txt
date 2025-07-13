@@ -1,0 +1,332 @@
+[2025-07-13T19:15:37.571Z] [INFO] [Aucune règle] Initialisation du test avec règles: {"open":false,"random":false,"elemental":false}
+[2025-07-13T19:15:37.573Z] [INFO] [Aucune règle] Vérification de l'état initial...
+[2025-07-13T19:15:37.573Z] [INFO] [Aucune règle] Vérification du nombre de cartes en main...
+[2025-07-13T19:15:37.573Z] [INFO] [Aucune règle] Vérification que le plateau est vide...
+[2025-07-13T19:15:37.573Z] [INFO] [Aucune règle] Vérification de la validité des cartes...
+[2025-07-13T19:15:37.573Z] [INFO] [Aucune règle] Vérification carte 0 (BLUE): [2|8|8|4]
+[2025-07-13T19:15:37.573Z] [INFO] [Aucune règle] Vérification carte 1 (BLUE): [5|3|7|6](H)
+[2025-07-13T19:15:37.573Z] [INFO] [Aucune règle] Vérification carte 2 (BLUE): [6|2|6|7]
+[2025-07-13T19:15:37.573Z] [INFO] [Aucune règle] Vérification carte 3 (BLUE): [6|3|1|6](E)
+[2025-07-13T19:15:37.573Z] [INFO] [Aucune règle] Vérification carte 4 (BLUE): [2|3|1|5]
+[2025-07-13T19:15:37.573Z] [INFO] [Aucune règle] Vérification carte 5 (RED): [3|4|5|3]
+[2025-07-13T19:15:37.573Z] [INFO] [Aucune règle] Vérification carte 6 (RED): [A|3|A|3]
+[2025-07-13T19:15:37.573Z] [INFO] [Aucune règle] Vérification carte 7 (RED): [6|7|8|4]
+[2025-07-13T19:15:37.573Z] [INFO] [Aucune règle] Vérification carte 8 (RED): [7|4|4|2]
+[2025-07-13T19:15:37.573Z] [INFO] [Aucune règle] Vérification carte 9 (RED): [1|1|5|4]
+[2025-07-13T19:15:37.573Z] [INFO] [Aucune règle] Vérification initiale terminée: 0 violations trouvées
+[2025-07-13T19:15:37.573Z] [INFO] [Aucune règle] ✓ Initialisation correcte
+[2025-07-13T19:15:37.573Z] [INFO] [Aucune règle] RED commence la partie
+[2025-07-13T19:15:37.573Z] [INFO] [Aucune règle] === Tour 1 - RED ===
+[2025-07-13T19:15:37.573Z] [INFO] [Aucune règle] Cartes en main avant le tour: 5
+[2025-07-13T19:15:37.573Z] [INFO] [Aucune règle] Main RED[0]: [3|4|5|3]
+[2025-07-13T19:15:37.573Z] [INFO] [Aucune règle] Main RED[1]: [A|3|A|3]
+[2025-07-13T19:15:37.573Z] [INFO] [Aucune règle] Main RED[2]: [6|7|8|4]
+[2025-07-13T19:15:37.573Z] [INFO] [Aucune règle] Main RED[3]: [7|4|4|2]
+[2025-07-13T19:15:37.573Z] [INFO] [Aucune règle] Main RED[4]: [1|1|5|4]
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] RED joue carte[0]: [3|4|5|3] en position (0, 0)
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] Vérification validité du coup: (0, 0)
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] Position (0, 0) valide et libre
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] Calcul captures pour carte [3|4|5|3] en (0,0)
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] Pas de carte adjacente côté top
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] Pas de carte adjacente côté right
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] Pas de carte adjacente côté bottom
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] Pas de carte adjacente côté left
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] Total captures calculées: 0
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] Captures potentielles calculées: 0
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] État du plateau avant le coup:
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] Plateau row 0: [Empty] [Empty] [Empty] 
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] Plateau row 1: [Empty] [Empty] [Empty] 
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] Plateau row 2: [Empty] [Empty] [Empty] 
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] Décompte avant le coup: BLUE=0, RED=0
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] Début capture adjacentes pour [3|4|5|3] en (0,0)
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] Décompte avant captures: BLUE=0, RED=1
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] Décompte après captures: BLUE=0, RED=1
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] Changements: BLUE=0, RED=0
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] État du plateau après le coup:
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] Plateau row 0: [R:N] [Empty] [Empty] 
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] Plateau row 1: [Empty] [Empty] [Empty] 
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] Plateau row 2: [Empty] [Empty] [Empty] 
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] Décompte après le coup: BLUE=0, RED=1
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] Vérification post-coup tour 1
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] Cartes en main: 5 → 4
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] Cartes sur le plateau: 1, attendu: 1
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] Total cartes: BLUE(5) + RED(4) + Plateau(1) = 10
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] Tour 1 terminé avec succès
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] === Tour 2 - BLUE ===
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] Cartes en main avant le tour: 5
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] Main BLUE[0]: [2|8|8|4]
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] Main BLUE[1]: [5|3|7|6](H)
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] Main BLUE[2]: [6|2|6|7]
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] Main BLUE[3]: [6|3|1|6](E)
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] Main BLUE[4]: [2|3|1|5]
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] BLUE joue carte[1]: [5|3|7|6](H) en position (0, 1)
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] Vérification validité du coup: (0, 1)
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] Position (0, 1) valide et libre
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] Calcul captures pour carte [5|3|7|6](H) en (0,1)
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] Pas de carte adjacente côté top
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] Pas de carte adjacente côté right
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] Pas de carte adjacente côté bottom
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] Comparaison left: 6 vs 4 - carte adverse [3|4|5|3]
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] Capture détectée côté left: 6 > 4
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] Total captures calculées: 1
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] Captures potentielles calculées: 1
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] État du plateau avant le coup:
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] Plateau row 0: [R:N] [Empty] [Empty] 
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] Plateau row 1: [Empty] [Empty] [Empty] 
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] Plateau row 2: [Empty] [Empty] [Empty] 
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] Décompte avant le coup: BLUE=0, RED=1
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] Début capture adjacentes pour [5|3|7|6](H) en (0,1)
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] Décompte avant captures: BLUE=1, RED=1
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] Décompte après captures: BLUE=2, RED=0
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] Changements: BLUE=1, RED=-1
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] État du plateau après le coup:
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] Plateau row 0: [B:N] [B:H] [Empty] 
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] Plateau row 1: [Empty] [Empty] [Empty] 
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] Plateau row 2: [Empty] [Empty] [Empty] 
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] Décompte après le coup: BLUE=2, RED=0
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] Vérification post-coup tour 2
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] Cartes en main: 5 → 4
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] Cartes sur le plateau: 2, attendu: 2
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] Total cartes: BLUE(4) + RED(4) + Plateau(2) = 10
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] Tour 2 terminé avec succès
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] === Tour 3 - RED ===
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] Cartes en main avant le tour: 4
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] Main RED[0]: [A|3|A|3]
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] Main RED[1]: [6|7|8|4]
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] Main RED[2]: [7|4|4|2]
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] Main RED[3]: [1|1|5|4]
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] RED joue carte[0]: [A|3|A|3] en position (1, 0)
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] Vérification validité du coup: (1, 0)
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] Position (1, 0) valide et libre
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] Calcul captures pour carte [A|3|A|3] en (1,0)
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] Comparaison top: 10 vs 5 - carte adverse [3|4|5|3]
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] Capture détectée côté top: 10 > 5
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] Pas de carte adjacente côté right
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] Pas de carte adjacente côté bottom
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] Pas de carte adjacente côté left
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] Total captures calculées: 1
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] Captures potentielles calculées: 1
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] État du plateau avant le coup:
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] Plateau row 0: [B:N] [B:H] [Empty] 
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] Plateau row 1: [Empty] [Empty] [Empty] 
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] Plateau row 2: [Empty] [Empty] [Empty] 
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] Décompte avant le coup: BLUE=2, RED=0
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] Début capture adjacentes pour [A|3|A|3] en (1,0)
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] Décompte avant captures: BLUE=2, RED=1
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] Décompte après captures: BLUE=1, RED=2
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] Changements: BLUE=-1, RED=1
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] État du plateau après le coup:
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] Plateau row 0: [R:N] [B:H] [Empty] 
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] Plateau row 1: [R:N] [Empty] [Empty] 
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] Plateau row 2: [Empty] [Empty] [Empty] 
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] Décompte après le coup: BLUE=1, RED=2
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] Vérification post-coup tour 3
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] Cartes en main: 4 → 3
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] Cartes sur le plateau: 3, attendu: 3
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] Total cartes: BLUE(4) + RED(3) + Plateau(3) = 10
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] Tour 3 terminé avec succès
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] === Tour 4 - BLUE ===
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] Cartes en main avant le tour: 4
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] Main BLUE[0]: [2|8|8|4]
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] Main BLUE[1]: [6|2|6|7]
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] Main BLUE[2]: [6|3|1|6](E)
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] Main BLUE[3]: [2|3|1|5]
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] BLUE joue carte[0]: [2|8|8|4] en position (1, 1)
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] Vérification validité du coup: (1, 1)
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] Position (1, 1) valide et libre
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] Calcul captures pour carte [2|8|8|4] en (1,1)
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] Pas de capture côté top: même propriétaire
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] Pas de carte adjacente côté right
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] Pas de carte adjacente côté bottom
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] Comparaison left: 4 vs 3 - carte adverse [A|3|A|3]
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] Capture détectée côté left: 4 > 3
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] Total captures calculées: 1
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] Captures potentielles calculées: 1
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] État du plateau avant le coup:
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] Plateau row 0: [R:N] [B:H] [Empty] 
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] Plateau row 1: [R:N] [Empty] [Empty] 
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] Plateau row 2: [Empty] [Empty] [Empty] 
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] Décompte avant le coup: BLUE=1, RED=2
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] Début capture adjacentes pour [2|8|8|4] en (1,1)
+[2025-07-13T19:15:37.574Z] [INFO] [Aucune règle] Décompte avant captures: BLUE=2, RED=2
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Décompte après captures: BLUE=3, RED=1
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Changements: BLUE=1, RED=-1
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] État du plateau après le coup:
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Plateau row 0: [R:N] [B:H] [Empty] 
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Plateau row 1: [B:N] [B:N] [Empty] 
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Plateau row 2: [Empty] [Empty] [Empty] 
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Décompte après le coup: BLUE=3, RED=1
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Vérification post-coup tour 4
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Cartes en main: 4 → 3
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Cartes sur le plateau: 4, attendu: 4
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Total cartes: BLUE(3) + RED(3) + Plateau(4) = 10
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Tour 4 terminé avec succès
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] === Tour 5 - RED ===
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Cartes en main avant le tour: 3
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Main RED[0]: [6|7|8|4]
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Main RED[1]: [7|4|4|2]
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Main RED[2]: [1|1|5|4]
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] RED joue carte[0]: [6|7|8|4] en position (0, 2)
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Vérification validité du coup: (0, 2)
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Position (0, 2) valide et libre
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Calcul captures pour carte [6|7|8|4] en (0,2)
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Pas de carte adjacente côté top
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Pas de carte adjacente côté right
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Pas de carte adjacente côté bottom
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Comparaison left: 4 vs 3 - carte adverse [5|3|7|6](H)
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Capture détectée côté left: 4 > 3
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Total captures calculées: 1
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Captures potentielles calculées: 1
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] État du plateau avant le coup:
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Plateau row 0: [R:N] [B:H] [Empty] 
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Plateau row 1: [B:N] [B:N] [Empty] 
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Plateau row 2: [Empty] [Empty] [Empty] 
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Décompte avant le coup: BLUE=3, RED=1
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Début capture adjacentes pour [6|7|8|4] en (0,2)
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Décompte avant captures: BLUE=3, RED=2
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Décompte après captures: BLUE=2, RED=3
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Changements: BLUE=-1, RED=1
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] État du plateau après le coup:
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Plateau row 0: [R:N] [R:H] [R:N] 
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Plateau row 1: [B:N] [B:N] [Empty] 
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Plateau row 2: [Empty] [Empty] [Empty] 
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Décompte après le coup: BLUE=2, RED=3
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Vérification post-coup tour 5
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Cartes en main: 3 → 2
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Cartes sur le plateau: 5, attendu: 5
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Total cartes: BLUE(3) + RED(2) + Plateau(5) = 10
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Tour 5 terminé avec succès
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] === Tour 6 - BLUE ===
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Cartes en main avant le tour: 3
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Main BLUE[0]: [6|2|6|7]
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Main BLUE[1]: [6|3|1|6](E)
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Main BLUE[2]: [2|3|1|5]
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] BLUE joue carte[0]: [6|2|6|7] en position (1, 2)
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Vérification validité du coup: (1, 2)
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Position (1, 2) valide et libre
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Calcul captures pour carte [6|2|6|7] en (1,2)
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Comparaison top: 6 vs 8 - carte adverse [6|7|8|4]
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Pas de carte adjacente côté right
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Pas de carte adjacente côté bottom
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Pas de capture côté left: même propriétaire
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Total captures calculées: 0
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Captures potentielles calculées: 0
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] État du plateau avant le coup:
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Plateau row 0: [R:N] [R:H] [R:N] 
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Plateau row 1: [B:N] [B:N] [Empty] 
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Plateau row 2: [Empty] [Empty] [Empty] 
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Décompte avant le coup: BLUE=2, RED=3
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Début capture adjacentes pour [6|2|6|7] en (1,2)
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Décompte avant captures: BLUE=3, RED=3
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Décompte après captures: BLUE=3, RED=3
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Changements: BLUE=0, RED=0
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] État du plateau après le coup:
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Plateau row 0: [R:N] [R:H] [R:N] 
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Plateau row 1: [B:N] [B:N] [B:N] 
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Plateau row 2: [Empty] [Empty] [Empty] 
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Décompte après le coup: BLUE=3, RED=3
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Vérification post-coup tour 6
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Cartes en main: 3 → 2
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Cartes sur le plateau: 6, attendu: 6
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Total cartes: BLUE(2) + RED(2) + Plateau(6) = 10
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Tour 6 terminé avec succès
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] === Tour 7 - RED ===
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Cartes en main avant le tour: 2
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Main RED[0]: [7|4|4|2]
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Main RED[1]: [1|1|5|4]
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] RED joue carte[0]: [7|4|4|2] en position (2, 2)
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Vérification validité du coup: (2, 2)
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Position (2, 2) valide et libre
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Calcul captures pour carte [7|4|4|2] en (2,2)
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Comparaison top: 7 vs 6 - carte adverse [6|2|6|7]
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Capture détectée côté top: 7 > 6
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Pas de carte adjacente côté right
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Pas de carte adjacente côté bottom
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Pas de carte adjacente côté left
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Total captures calculées: 1
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Captures potentielles calculées: 1
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] État du plateau avant le coup:
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Plateau row 0: [R:N] [R:H] [R:N] 
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Plateau row 1: [B:N] [B:N] [B:N] 
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Plateau row 2: [Empty] [Empty] [Empty] 
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Décompte avant le coup: BLUE=3, RED=3
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Début capture adjacentes pour [7|4|4|2] en (2,2)
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Décompte avant captures: BLUE=3, RED=4
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Décompte après captures: BLUE=2, RED=5
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Changements: BLUE=-1, RED=1
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] État du plateau après le coup:
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Plateau row 0: [R:N] [R:H] [R:N] 
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Plateau row 1: [B:N] [B:N] [R:N] 
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Plateau row 2: [Empty] [Empty] [R:N] 
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Décompte après le coup: BLUE=2, RED=5
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Vérification post-coup tour 7
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Cartes en main: 2 → 1
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Cartes sur le plateau: 7, attendu: 7
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Total cartes: BLUE(2) + RED(1) + Plateau(7) = 10
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Tour 7 terminé avec succès
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] === Tour 8 - BLUE ===
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Cartes en main avant le tour: 2
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Main BLUE[0]: [6|3|1|6](E)
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Main BLUE[1]: [2|3|1|5]
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] BLUE joue carte[0]: [6|3|1|6](E) en position (2, 1)
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Vérification validité du coup: (2, 1)
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Position (2, 1) valide et libre
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Calcul captures pour carte [6|3|1|6](E) en (2,1)
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Pas de capture côté top: même propriétaire
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Comparaison right: 3 vs 2 - carte adverse [7|4|4|2]
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Capture détectée côté right: 3 > 2
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Pas de carte adjacente côté bottom
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Pas de carte adjacente côté left
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Total captures calculées: 1
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Captures potentielles calculées: 1
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] État du plateau avant le coup:
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Plateau row 0: [R:N] [R:H] [R:N] 
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Plateau row 1: [B:N] [B:N] [R:N] 
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Plateau row 2: [Empty] [Empty] [R:N] 
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Décompte avant le coup: BLUE=2, RED=5
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Début capture adjacentes pour [6|3|1|6](E) en (2,1)
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Décompte avant captures: BLUE=3, RED=5
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Décompte après captures: BLUE=4, RED=4
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Changements: BLUE=1, RED=-1
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] État du plateau après le coup:
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Plateau row 0: [R:N] [R:H] [R:N] 
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Plateau row 1: [B:N] [B:N] [R:N] 
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Plateau row 2: [Empty] [B:E] [B:N] 
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Décompte après le coup: BLUE=4, RED=4
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Vérification post-coup tour 8
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Cartes en main: 2 → 1
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Cartes sur le plateau: 8, attendu: 8
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Total cartes: BLUE(1) + RED(1) + Plateau(8) = 10
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Tour 8 terminé avec succès
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] === Tour 9 - RED ===
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Cartes en main avant le tour: 1
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Main RED[0]: [1|1|5|4]
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] RED joue carte[0]: [1|1|5|4] en position (2, 0)
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Vérification validité du coup: (2, 0)
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Position (2, 0) valide et libre
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Calcul captures pour carte [1|1|5|4] en (2,0)
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Comparaison top: 1 vs 10 - carte adverse [A|3|A|3]
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Comparaison right: 1 vs 6 - carte adverse [6|3|1|6](E)
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Pas de carte adjacente côté bottom
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Pas de carte adjacente côté left
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Total captures calculées: 0
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Captures potentielles calculées: 0
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] État du plateau avant le coup:
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Plateau row 0: [R:N] [R:H] [R:N] 
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Plateau row 1: [B:N] [B:N] [R:N] 
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Plateau row 2: [Empty] [B:E] [B:N] 
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Décompte avant le coup: BLUE=4, RED=4
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Début capture adjacentes pour [1|1|5|4] en (2,0)
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Décompte avant captures: BLUE=4, RED=5
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Décompte après captures: BLUE=4, RED=5
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Changements: BLUE=0, RED=0
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] État du plateau après le coup:
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Plateau row 0: [R:N] [R:H] [R:N] 
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Plateau row 1: [B:N] [B:N] [R:N] 
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Plateau row 2: [R:N] [B:E] [B:N] 
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Décompte après le coup: BLUE=4, RED=5
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Vérification post-coup tour 9
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Cartes en main: 1 → 0
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Cartes sur le plateau: 9, attendu: 9
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Total cartes: BLUE(1) + RED(0) + Plateau(9) = 10
+[2025-07-13T19:15:37.575Z] [INFO] [Aucune règle] Tour 9 terminé avec succès

@@ -1,11 +1,20 @@
 {
-  "name": "triple-triad-v0.1",
-  "version": "0.1.0",
-  "description": "Triple Triad card game inspired by Final Fantasy VIII",
-  "main": "main.js",
+  "name": "triple-triad",
+  "version": "0.4.0",
+  "description": "Implémentation du jeu Triple Triad avec règles avancées",
+  "main": "src/main.js",
   "scripts": {
-    "start": "node main.js"
+    "start": "node src/main.js",
+    "test": "node tests/run-all-tests.js",
+    "test:ai": "node tests/test-ai-vs-ai.js",
+    "test:v4": "node tests/test-v0-4.js",
+    "test:v4-extended": "node tests/test-v0-4-extended.js",
+    "test:plus": "node tests/test-perfect-plus-same.js"
   },
-  "author": "",
-  "license": "ISC"
+  "keywords": ["game", "triple-triad", "cards"],
+  "author": "Franck",
+  "license": "MIT",
+  "engines": {
+    "node": ">=14.0.0"
+  }
 }

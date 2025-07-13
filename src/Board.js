@@ -1,6 +1,7 @@
 class Board {
     constructor() {
         this.grid = Array(3).fill(null).map(() => Array(3).fill(null));
+        this.elementalSquares = Array(3).fill(null).map(() => Array(3).fill('None'));
     }
 
     isValidPosition(row, col) {
@@ -79,7 +80,28 @@ class Board {
         return positions;
     }
 
-    display() {
+    initializeElementalSquares() {
+        const elements = ['Fire', 'Ice', 'Thunder', 'Earth', 'Poison', 'Wind', 'Water', 'Holy'];
+        const numberOfElementalSquares = Math.floor(Math.random() * 4) + 1;
+        
+        for (let i = 0; i < numberOfElementalSquares; i++) {
+            const row = Math.floor(Math.random() * 3);
+            const col = Math.floor(Math.random() * 3);
+            const elementIndex = Math.floor(Math.random() * elements.length);
+            this.elementalSquares[row][col] = elements[elementIndex];
+        }
+        
+        console.log(`Initialized ${numberOfElementalSquares} elemental square(s)`);
+    }
+
+    getSquareElement(row, col) {
+        if (!this.isValidPosition(row, col)) {
+            return 'None';
+        }
+        return this.elementalSquares[row][col];
+    }
+
+    display(showElements = false) {
         console.log('\n  0   1   2');
         console.log(' ┌───┬───┬───┐');
         
@@ -87,8 +109,12 @@ class Board {
             let line = row + '│';
             for (let col = 0; col < 3; col++) {
                 const card = this.grid[row][col];
+                const element = this.elementalSquares[row][col];
+                
                 if (card) {
                     line += ` ${card.owner[0]} `;
+                } else if (showElements && element !== 'None') {
+                    line += ` ${element[0]} `;
                 } else {
                     line += '   ';
                 }
@@ -101,6 +127,10 @@ class Board {
             }
         }
         console.log(' └───┴───┴───┘\n');
+        
+        if (showElements) {
+            console.log('Elements: F=Fire, I=Ice, T=Thunder, E=Earth, P=Poison, W=Wind/Water, H=Holy');
+        }
     }
 }
 

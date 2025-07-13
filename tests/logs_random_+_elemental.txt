@@ -1,0 +1,348 @@
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Initialisation du test avec règles: {"open":false,"random":true,"elemental":true}
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Cases élémentaires initialisées
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Vérification de l'état initial...
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Vérification du nombre de cartes en main...
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Vérification que le plateau est vide...
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Vérification de la validité des cartes...
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Vérification carte 0 (BLUE): [6|7|4|9](I)
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Vérification carte 1 (BLUE): [5|1|3|1]
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Vérification carte 2 (BLUE): [6|2|6|7]
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Vérification carte 3 (BLUE): [A|7|2|8]
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Vérification carte 4 (BLUE): [2|3|6|6]
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Vérification carte 5 (RED): [4|4|7|2](F)
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Vérification carte 6 (RED): [9|6|7|3]
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Vérification carte 7 (RED): [6|1|4|3](I)
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Vérification carte 8 (RED): [3|5|2|1](E)
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Vérification carte 9 (RED): [6|5|4|2]
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Vérification des cases élémentaires...
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Case élémentaire (0,2): Earth
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Case élémentaire (1,0): Poison
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Case élémentaire (2,0): Holy
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] 3 case(s) élémentaire(s) trouvée(s)
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Vérification initiale terminée: 0 violations trouvées
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] ✓ Initialisation correcte
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] RED commence la partie
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] === Tour 1 - RED ===
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Cartes en main avant le tour: 5
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Main RED[0]: [4|4|7|2](F)
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Main RED[1]: [9|6|7|3]
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Main RED[2]: [6|1|4|3](I)
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Main RED[3]: [3|5|2|1](E)
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Main RED[4]: [6|5|4|2]
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] RED joue carte[0]: [4|4|7|2](F) en position (0, 0)
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Élément carte: Fire, Élément case: None
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Vérification validité du coup: (0, 0)
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Position (0, 0) valide et libre
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Calcul captures pour carte [4|4|7|2](F) en (0,0)
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Pas de carte adjacente côté top
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Pas de carte adjacente côté right
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Pas de carte adjacente côté bottom
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Pas de carte adjacente côté left
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Total captures calculées: 0
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Captures potentielles calculées: 0
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] État du plateau avant le coup:
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Plateau row 0: [Empty] [Empty] [E] 
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Plateau row 1: [P] [Empty] [Empty] 
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Plateau row 2: [H] [Empty] [Empty] 
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Décompte avant le coup: BLUE=0, RED=0
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Début capture adjacentes pour [4|4|7|2](F) en (0,0)
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Décompte avant captures: BLUE=0, RED=1
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Décompte après captures: BLUE=0, RED=1
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Changements: BLUE=0, RED=0
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] État du plateau après le coup:
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Plateau row 0: [R:F] [Empty] [E] 
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Plateau row 1: [P] [Empty] [Empty] 
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Plateau row 2: [H] [Empty] [Empty] 
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Décompte après le coup: BLUE=0, RED=1
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Vérification post-coup tour 1
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Cartes en main: 5 → 4
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Cartes sur le plateau: 1, attendu: 1
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Total cartes: BLUE(5) + RED(4) + Plateau(1) = 10
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Tour 1 terminé avec succès
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] === Tour 2 - BLUE ===
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Cartes en main avant le tour: 5
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Main BLUE[0]: [6|7|4|9](I)
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Main BLUE[1]: [5|1|3|1]
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Main BLUE[2]: [6|2|6|7]
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Main BLUE[3]: [A|7|2|8]
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Main BLUE[4]: [2|3|6|6]
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] BLUE joue carte[0]: [6|7|4|9](I) en position (0, 1)
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Élément carte: Ice, Élément case: None
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Vérification validité du coup: (0, 1)
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Position (0, 1) valide et libre
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Calcul captures pour carte [6|7|4|9](I) en (0,1)
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Pas de carte adjacente côté top
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Pas de carte adjacente côté right
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Pas de carte adjacente côté bottom
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Comparaison left: 9(effectif) vs 4(effectif) - carte adverse [4|4|7|2](F)
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Capture détectée côté left: 9 > 4
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Total captures calculées: 1
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Captures potentielles calculées: 1
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] État du plateau avant le coup:
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Plateau row 0: [R:F] [Empty] [E] 
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Plateau row 1: [P] [Empty] [Empty] 
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Plateau row 2: [H] [Empty] [Empty] 
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Décompte avant le coup: BLUE=0, RED=1
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Début capture adjacentes pour [6|7|4|9](I) en (0,1)
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Décompte avant captures: BLUE=1, RED=1
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Décompte après captures: BLUE=2, RED=0
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Changements: BLUE=1, RED=-1
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] État du plateau après le coup:
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Plateau row 0: [B:F] [B:I] [E] 
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Plateau row 1: [P] [Empty] [Empty] 
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Plateau row 2: [H] [Empty] [Empty] 
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Décompte après le coup: BLUE=2, RED=0
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Vérification post-coup tour 2
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Cartes en main: 5 → 4
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Cartes sur le plateau: 2, attendu: 2
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Total cartes: BLUE(4) + RED(4) + Plateau(2) = 10
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Tour 2 terminé avec succès
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] === Tour 3 - RED ===
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Cartes en main avant le tour: 4
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Main RED[0]: [9|6|7|3]
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Main RED[1]: [6|1|4|3](I)
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Main RED[2]: [3|5|2|1](E)
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Main RED[3]: [6|5|4|2]
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] RED joue carte[0]: [9|6|7|3] en position (1, 0)
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Élément carte: None, Élément case: Poison
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Vérification validité du coup: (1, 0)
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Position (1, 0) valide et libre
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Calcul captures pour carte [9|6|7|3] en (1,0)
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Comparaison top: 9(effectif) vs 7(effectif) - carte adverse [4|4|7|2](F)
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Capture détectée côté top: 9 > 7
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Pas de carte adjacente côté right
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Pas de carte adjacente côté bottom
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Pas de carte adjacente côté left
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Total captures calculées: 1
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Captures potentielles calculées: 1
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] État du plateau avant le coup:
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Plateau row 0: [B:F] [B:I] [E] 
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Plateau row 1: [P] [Empty] [Empty] 
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Plateau row 2: [H] [Empty] [Empty] 
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Décompte avant le coup: BLUE=2, RED=0
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Début capture adjacentes pour [9|6|7|3] en (1,0)
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Décompte avant captures: BLUE=2, RED=1
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Décompte après captures: BLUE=1, RED=2
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Changements: BLUE=-1, RED=1
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] État du plateau après le coup:
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Plateau row 0: [R:F] [B:I] [E] 
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Plateau row 1: [R:N] [Empty] [Empty] 
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Plateau row 2: [H] [Empty] [Empty] 
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Décompte après le coup: BLUE=1, RED=2
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Vérification post-coup tour 3
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Cartes en main: 4 → 3
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Cartes sur le plateau: 3, attendu: 3
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Total cartes: BLUE(4) + RED(3) + Plateau(3) = 10
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Tour 3 terminé avec succès
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] === Tour 4 - BLUE ===
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Cartes en main avant le tour: 4
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Main BLUE[0]: [5|1|3|1]
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Main BLUE[1]: [6|2|6|7]
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Main BLUE[2]: [A|7|2|8]
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Main BLUE[3]: [2|3|6|6]
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] BLUE joue carte[1]: [6|2|6|7] en position (1, 1)
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Élément carte: None, Élément case: None
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Vérification validité du coup: (1, 1)
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Position (1, 1) valide et libre
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Calcul captures pour carte [6|2|6|7] en (1,1)
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Pas de capture côté top: même propriétaire
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Pas de carte adjacente côté right
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Pas de carte adjacente côté bottom
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Comparaison left: 7(effectif) vs 6(effectif) - carte adverse [9|6|7|3]
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Capture détectée côté left: 7 > 6
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Total captures calculées: 1
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Captures potentielles calculées: 1
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] État du plateau avant le coup:
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Plateau row 0: [R:F] [B:I] [E] 
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Plateau row 1: [R:N] [Empty] [Empty] 
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Plateau row 2: [H] [Empty] [Empty] 
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Décompte avant le coup: BLUE=1, RED=2
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Début capture adjacentes pour [6|2|6|7] en (1,1)
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Décompte avant captures: BLUE=2, RED=2
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Décompte après captures: BLUE=3, RED=1
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Changements: BLUE=1, RED=-1
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] État du plateau après le coup:
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Plateau row 0: [R:F] [B:I] [E] 
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Plateau row 1: [B:N] [B:N] [Empty] 
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Plateau row 2: [H] [Empty] [Empty] 
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Décompte après le coup: BLUE=3, RED=1
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Vérification post-coup tour 4
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Cartes en main: 4 → 3
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Cartes sur le plateau: 4, attendu: 4
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Total cartes: BLUE(3) + RED(3) + Plateau(4) = 10
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Tour 4 terminé avec succès
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] === Tour 5 - RED ===
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Cartes en main avant le tour: 3
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Main RED[0]: [6|1|4|3](I)
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Main RED[1]: [3|5|2|1](E)
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Main RED[2]: [6|5|4|2]
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] RED joue carte[0]: [6|1|4|3](I) en position (1, 2)
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Élément carte: Ice, Élément case: None
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Vérification validité du coup: (1, 2)
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Position (1, 2) valide et libre
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Calcul captures pour carte [6|1|4|3](I) en (1,2)
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Pas de carte adjacente côté top
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Pas de carte adjacente côté right
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Pas de carte adjacente côté bottom
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Comparaison left: 3(effectif) vs 2(effectif) - carte adverse [6|2|6|7]
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Capture détectée côté left: 3 > 2
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Total captures calculées: 1
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Captures potentielles calculées: 1
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] État du plateau avant le coup:
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Plateau row 0: [R:F] [B:I] [E] 
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Plateau row 1: [B:N] [B:N] [Empty] 
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Plateau row 2: [H] [Empty] [Empty] 
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Décompte avant le coup: BLUE=3, RED=1
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Début capture adjacentes pour [6|1|4|3](I) en (1,2)
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Décompte avant captures: BLUE=3, RED=2
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Décompte après captures: BLUE=2, RED=3
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Changements: BLUE=-1, RED=1
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] État du plateau après le coup:
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Plateau row 0: [R:F] [B:I] [E] 
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Plateau row 1: [B:N] [R:N] [R:I] 
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Plateau row 2: [H] [Empty] [Empty] 
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Décompte après le coup: BLUE=2, RED=3
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Vérification post-coup tour 5
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Cartes en main: 3 → 2
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Cartes sur le plateau: 5, attendu: 5
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Total cartes: BLUE(3) + RED(2) + Plateau(5) = 10
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Tour 5 terminé avec succès
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] === Tour 6 - BLUE ===
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Cartes en main avant le tour: 3
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Main BLUE[0]: [5|1|3|1]
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Main BLUE[1]: [A|7|2|8]
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Main BLUE[2]: [2|3|6|6]
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] BLUE joue carte[0]: [5|1|3|1] en position (2, 2)
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Élément carte: None, Élément case: None
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Vérification validité du coup: (2, 2)
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Position (2, 2) valide et libre
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Calcul captures pour carte [5|1|3|1] en (2,2)
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Comparaison top: 5(effectif) vs 4(effectif) - carte adverse [6|1|4|3](I)
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Capture détectée côté top: 5 > 4
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Pas de carte adjacente côté right
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Pas de carte adjacente côté bottom
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Pas de carte adjacente côté left
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Total captures calculées: 1
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Captures potentielles calculées: 1
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] État du plateau avant le coup:
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Plateau row 0: [R:F] [B:I] [E] 
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Plateau row 1: [B:N] [R:N] [R:I] 
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Plateau row 2: [H] [Empty] [Empty] 
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Décompte avant le coup: BLUE=2, RED=3
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Début capture adjacentes pour [5|1|3|1] en (2,2)
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Décompte avant captures: BLUE=3, RED=3
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Décompte après captures: BLUE=4, RED=2
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Changements: BLUE=1, RED=-1
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] État du plateau après le coup:
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Plateau row 0: [R:F] [B:I] [E] 
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Plateau row 1: [B:N] [R:N] [B:I] 
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Plateau row 2: [H] [Empty] [B:N] 
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Décompte après le coup: BLUE=4, RED=2
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Vérification post-coup tour 6
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Cartes en main: 3 → 2
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Cartes sur le plateau: 6, attendu: 6
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Total cartes: BLUE(2) + RED(2) + Plateau(6) = 10
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Tour 6 terminé avec succès
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] === Tour 7 - RED ===
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Cartes en main avant le tour: 2
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Main RED[0]: [3|5|2|1](E)
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Main RED[1]: [6|5|4|2]
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] RED joue carte[0]: [3|5|2|1](E) en position (2, 1)
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Élément carte: Earth, Élément case: None
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Vérification validité du coup: (2, 1)
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Position (2, 1) valide et libre
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Calcul captures pour carte [3|5|2|1](E) en (2,1)
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Pas de capture côté top: même propriétaire
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Comparaison right: 5(effectif) vs 1(effectif) - carte adverse [5|1|3|1]
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Capture détectée côté right: 5 > 1
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Pas de carte adjacente côté bottom
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Pas de carte adjacente côté left
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Total captures calculées: 1
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Captures potentielles calculées: 1
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] État du plateau avant le coup:
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Plateau row 0: [R:F] [B:I] [E] 
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Plateau row 1: [B:N] [R:N] [B:I] 
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Plateau row 2: [H] [Empty] [B:N] 
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Décompte avant le coup: BLUE=4, RED=2
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Début capture adjacentes pour [3|5|2|1](E) en (2,1)
+[2025-07-13T19:33:59.105Z] [INFO] [Random + Elemental] Décompte avant captures: BLUE=4, RED=3
+[2025-07-13T19:33:59.106Z] [INFO] [Random + Elemental] Décompte après captures: BLUE=3, RED=4
+[2025-07-13T19:33:59.106Z] [INFO] [Random + Elemental] Changements: BLUE=-1, RED=1
+[2025-07-13T19:33:59.106Z] [INFO] [Random + Elemental] État du plateau après le coup:
+[2025-07-13T19:33:59.106Z] [INFO] [Random + Elemental] Plateau row 0: [R:F] [B:I] [E] 
+[2025-07-13T19:33:59.106Z] [INFO] [Random + Elemental] Plateau row 1: [B:N] [R:N] [B:I] 
+[2025-07-13T19:33:59.106Z] [INFO] [Random + Elemental] Plateau row 2: [H] [R:E] [R:N] 
+[2025-07-13T19:33:59.106Z] [INFO] [Random + Elemental] Décompte après le coup: BLUE=3, RED=4
+[2025-07-13T19:33:59.106Z] [INFO] [Random + Elemental] Vérification post-coup tour 7
+[2025-07-13T19:33:59.106Z] [INFO] [Random + Elemental] Cartes en main: 2 → 1
+[2025-07-13T19:33:59.106Z] [INFO] [Random + Elemental] Cartes sur le plateau: 7, attendu: 7
+[2025-07-13T19:33:59.106Z] [INFO] [Random + Elemental] Total cartes: BLUE(2) + RED(1) + Plateau(7) = 10
+[2025-07-13T19:33:59.106Z] [INFO] [Random + Elemental] Tour 7 terminé avec succès
+[2025-07-13T19:33:59.106Z] [INFO] [Random + Elemental] === Tour 8 - BLUE ===
+[2025-07-13T19:33:59.106Z] [INFO] [Random + Elemental] Cartes en main avant le tour: 2
+[2025-07-13T19:33:59.106Z] [INFO] [Random + Elemental] Main BLUE[0]: [A|7|2|8]
+[2025-07-13T19:33:59.106Z] [INFO] [Random + Elemental] Main BLUE[1]: [2|3|6|6]
+[2025-07-13T19:33:59.106Z] [INFO] [Random + Elemental] BLUE joue carte[0]: [A|7|2|8] en position (2, 0)
+[2025-07-13T19:33:59.106Z] [INFO] [Random + Elemental] Élément carte: None, Élément case: Holy
+[2025-07-13T19:33:59.106Z] [INFO] [Random + Elemental] Vérification validité du coup: (2, 0)
+[2025-07-13T19:33:59.106Z] [INFO] [Random + Elemental] Position (2, 0) valide et libre
+[2025-07-13T19:33:59.106Z] [INFO] [Random + Elemental] Calcul captures pour carte [A|7|2|8] en (2,0)
+[2025-07-13T19:33:59.106Z] [INFO] [Random + Elemental] Pas de capture côté top: même propriétaire
+[2025-07-13T19:33:59.106Z] [INFO] [Random + Elemental] Comparaison right: 7(effectif) vs 1(effectif) - carte adverse [3|5|2|1](E)
+[2025-07-13T19:33:59.106Z] [INFO] [Random + Elemental] Capture détectée côté right: 7 > 1
+[2025-07-13T19:33:59.106Z] [INFO] [Random + Elemental] Pas de carte adjacente côté bottom
+[2025-07-13T19:33:59.106Z] [INFO] [Random + Elemental] Pas de carte adjacente côté left
+[2025-07-13T19:33:59.106Z] [INFO] [Random + Elemental] Total captures calculées: 1
+[2025-07-13T19:33:59.106Z] [INFO] [Random + Elemental] Captures potentielles calculées: 1
+[2025-07-13T19:33:59.106Z] [INFO] [Random + Elemental] État du plateau avant le coup:
+[2025-07-13T19:33:59.106Z] [INFO] [Random + Elemental] Plateau row 0: [R:F] [B:I] [E] 
+[2025-07-13T19:33:59.106Z] [INFO] [Random + Elemental] Plateau row 1: [B:N] [R:N] [B:I] 
+[2025-07-13T19:33:59.106Z] [INFO] [Random + Elemental] Plateau row 2: [H] [R:E] [R:N] 
+[2025-07-13T19:33:59.106Z] [INFO] [Random + Elemental] Décompte avant le coup: BLUE=3, RED=4
+[2025-07-13T19:33:59.106Z] [INFO] [Random + Elemental] Début capture adjacentes pour [A|7|2|8] en (2,0)
+[2025-07-13T19:33:59.106Z] [INFO] [Random + Elemental] Décompte avant captures: BLUE=4, RED=4
+[2025-07-13T19:33:59.106Z] [INFO] [Random + Elemental] Décompte après captures: BLUE=5, RED=3
+[2025-07-13T19:33:59.106Z] [INFO] [Random + Elemental] Changements: BLUE=1, RED=-1
+[2025-07-13T19:33:59.106Z] [INFO] [Random + Elemental] État du plateau après le coup:
+[2025-07-13T19:33:59.106Z] [INFO] [Random + Elemental] Plateau row 0: [R:F] [B:I] [E] 
+[2025-07-13T19:33:59.106Z] [INFO] [Random + Elemental] Plateau row 1: [B:N] [R:N] [B:I] 
+[2025-07-13T19:33:59.106Z] [INFO] [Random + Elemental] Plateau row 2: [B:N] [B:E] [R:N] 
+[2025-07-13T19:33:59.106Z] [INFO] [Random + Elemental] Décompte après le coup: BLUE=5, RED=3
+[2025-07-13T19:33:59.106Z] [INFO] [Random + Elemental] Vérification post-coup tour 8
+[2025-07-13T19:33:59.106Z] [INFO] [Random + Elemental] Cartes en main: 2 → 1
+[2025-07-13T19:33:59.106Z] [INFO] [Random + Elemental] Cartes sur le plateau: 8, attendu: 8
+[2025-07-13T19:33:59.106Z] [INFO] [Random + Elemental] Total cartes: BLUE(1) + RED(1) + Plateau(8) = 10
+[2025-07-13T19:33:59.106Z] [INFO] [Random + Elemental] Tour 8 terminé avec succès
+[2025-07-13T19:33:59.106Z] [INFO] [Random + Elemental] === Tour 9 - RED ===
+[2025-07-13T19:33:59.106Z] [INFO] [Random + Elemental] Cartes en main avant le tour: 1
+[2025-07-13T19:33:59.106Z] [INFO] [Random + Elemental] Main RED[0]: [6|5|4|2]
+[2025-07-13T19:33:59.106Z] [INFO] [Random + Elemental] RED joue carte[0]: [6|5|4|2] en position (0, 2)
+[2025-07-13T19:33:59.106Z] [INFO] [Random + Elemental] Élément carte: None, Élément case: Earth
+[2025-07-13T19:33:59.106Z] [INFO] [Random + Elemental] Vérification validité du coup: (0, 2)
+[2025-07-13T19:33:59.106Z] [INFO] [Random + Elemental] Position (0, 2) valide et libre
+[2025-07-13T19:33:59.106Z] [INFO] [Random + Elemental] Calcul captures pour carte [6|5|4|2] en (0,2)
+[2025-07-13T19:33:59.106Z] [INFO] [Random + Elemental] Pas de carte adjacente côté top
+[2025-07-13T19:33:59.106Z] [INFO] [Random + Elemental] Pas de carte adjacente côté right
+[2025-07-13T19:33:59.106Z] [INFO] [Random + Elemental] Comparaison bottom: 4(effectif) vs 6(effectif) - carte adverse [6|1|4|3](I)
+[2025-07-13T19:33:59.106Z] [INFO] [Random + Elemental] Comparaison left: 2(effectif) vs 7(effectif) - carte adverse [6|7|4|9](I)
+[2025-07-13T19:33:59.106Z] [INFO] [Random + Elemental] Total captures calculées: 0
+[2025-07-13T19:33:59.106Z] [INFO] [Random + Elemental] Captures potentielles calculées: 0
+[2025-07-13T19:33:59.106Z] [INFO] [Random + Elemental] État du plateau avant le coup:
+[2025-07-13T19:33:59.106Z] [INFO] [Random + Elemental] Plateau row 0: [R:F] [B:I] [E] 
+[2025-07-13T19:33:59.106Z] [INFO] [Random + Elemental] Plateau row 1: [B:N] [R:N] [B:I] 
+[2025-07-13T19:33:59.106Z] [INFO] [Random + Elemental] Plateau row 2: [B:N] [B:E] [R:N] 
+[2025-07-13T19:33:59.106Z] [INFO] [Random + Elemental] Décompte avant le coup: BLUE=5, RED=3
+[2025-07-13T19:33:59.106Z] [INFO] [Random + Elemental] Début capture adjacentes pour [6|5|4|2] en (0,2)
+[2025-07-13T19:33:59.106Z] [INFO] [Random + Elemental] Décompte avant captures: BLUE=5, RED=4
+[2025-07-13T19:33:59.106Z] [INFO] [Random + Elemental] Décompte après captures: BLUE=5, RED=4
+[2025-07-13T19:33:59.106Z] [INFO] [Random + Elemental] Changements: BLUE=0, RED=0
+[2025-07-13T19:33:59.106Z] [INFO] [Random + Elemental] État du plateau après le coup:
+[2025-07-13T19:33:59.106Z] [INFO] [Random + Elemental] Plateau row 0: [R:F] [B:I] [R:N] 
+[2025-07-13T19:33:59.106Z] [INFO] [Random + Elemental] Plateau row 1: [B:N] [R:N] [B:I] 
+[2025-07-13T19:33:59.106Z] [INFO] [Random + Elemental] Plateau row 2: [B:N] [B:E] [R:N] 
+[2025-07-13T19:33:59.106Z] [INFO] [Random + Elemental] Décompte après le coup: BLUE=5, RED=4
+[2025-07-13T19:33:59.106Z] [INFO] [Random + Elemental] Vérification post-coup tour 9
+[2025-07-13T19:33:59.106Z] [INFO] [Random + Elemental] Cartes en main: 1 → 0
+[2025-07-13T19:33:59.106Z] [INFO] [Random + Elemental] Cartes sur le plateau: 9, attendu: 9
+[2025-07-13T19:33:59.106Z] [INFO] [Random + Elemental] Total cartes: BLUE(1) + RED(0) + Plateau(9) = 10
+[2025-07-13T19:33:59.106Z] [INFO] [Random + Elemental] Tour 9 terminé avec succès

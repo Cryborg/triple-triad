@@ -2,11 +2,20 @@ class Player {
     constructor(id, isAI = false) {
         this.id = id;
         this.hand = [];
+        this.collection = [];
         this.isAI = isAI;
     }
 
     addCardToHand(card) {
         this.hand.push(card);
+    }
+
+    addCardToCollection(card) {
+        this.collection.push(card);
+    }
+
+    clearHand() {
+        this.hand = [];
     }
 
     hasCards() {
@@ -55,7 +64,7 @@ class Player {
         };
     }
 
-    getSmartMove(board) {
+    getSmartMove(board, opponentHand = null, elementalRuleActive = false) {
         if (!this.isAI || this.hand.length === 0) {
             return null;
         }
@@ -72,7 +81,7 @@ class Player {
             const card = this.hand[cardIndex];
             
             for (const position of emptyPositions) {
-                const captures = this.countPotentialCaptures(board, card, position.row, position.col);
+                const captures = this.countPotentialCaptures(board, card, position.row, position.col, elementalRuleActive);
                 
                 if (captures > maxCaptures) {
                     maxCaptures = captures;
@@ -88,20 +97,39 @@ class Player {
         return bestMove || this.getRandomMove(board);
     }
 
-    countPotentialCaptures(board, card, row, col) {
+    countPotentialCaptures(board, card, row, col, elementalRuleActive = false) {
         const adjacent = board.getAdjacentCards(row, col);
+        const adjacentPositions = {
+            top: { row: row - 1, col },
+            right: { row, col: col + 1 },
+            bottom: { row: row + 1, col },
+            left: { row, col: col - 1 }
+        };
         let captures = 0;
 
+        const placedSquareElement = board.getSquareElement(row, col);
+
         const comparisons = [
-            { side: 'top', adjacentCard: adjacent.top, cardSide: 'bottom' },
-            { side: 'right', adjacentCard: adjacent.right, cardSide: 'left' },
-            { side: 'bottom', adjacentCard: adjacent.bottom, cardSide: 'top' },
-            { side: 'left', adjacentCard: adjacent.left, cardSide: 'right' }
+            { side: 'top', adjacentCard: adjacent.top, cardSide: 'bottom', adjacentPos: adjacentPositions.top },
+            { side: 'right', adjacentCard: adjacent.right, cardSide: 'left', adjacentPos: adjacentPositions.right },
+            { side: 'bottom', adjacentCard: adjacent.bottom, cardSide: 'top', adjacentPos: adjacentPositions.bottom },
+            { side: 'left', adjacentCard: adjacent.left, cardSide: 'right', adjacentPos: adjacentPositions.left }
         ];
 
-        for (const { side, adjacentCard, cardSide } of comparisons) {
+        for (const { side, adjacentCard, cardSide, adjacentPos } of comparisons) {
             if (adjacentCard && adjacentCard.owner !== this.id) {
-                if (card.getRank(side) > adjacentCard.getRank(cardSide)) {
+                let cardRank, adjacentRank;
+                
+                if (elementalRuleActive) {
+                    const adjacentSquareElement = board.getSquareElement(adjacentPos.row, adjacentPos.col);
+                    cardRank = card.getEffectiveRank(side, placedSquareElement, true);
+                    adjacentRank = adjacentCard.getEffectiveRank(cardSide, adjacentSquareElement, true);
+                } else {
+                    cardRank = card.getRank(side);
+                    adjacentRank = adjacentCard.getRank(cardSide);
+                }
+                
+                if (cardRank > adjacentRank) {
                     captures++;
                 }
             }

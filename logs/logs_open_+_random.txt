@@ -1,0 +1,332 @@
+[2025-07-13T19:15:37.580Z] [INFO] [Open + Random] Initialisation du test avec règles: {"open":true,"random":true,"elemental":false}
+[2025-07-13T19:15:37.580Z] [INFO] [Open + Random] Vérification de l'état initial...
+[2025-07-13T19:15:37.580Z] [INFO] [Open + Random] Vérification du nombre de cartes en main...
+[2025-07-13T19:15:37.580Z] [INFO] [Open + Random] Vérification que le plateau est vide...
+[2025-07-13T19:15:37.580Z] [INFO] [Open + Random] Vérification de la validité des cartes...
+[2025-07-13T19:15:37.580Z] [INFO] [Open + Random] Vérification carte 0 (BLUE): [6|7|4|9](I)
+[2025-07-13T19:15:37.580Z] [INFO] [Open + Random] Vérification carte 1 (BLUE): [7|2|7|A](F)
+[2025-07-13T19:15:37.580Z] [INFO] [Open + Random] Vérification carte 2 (BLUE): [2|8|8|4]
+[2025-07-13T19:15:37.580Z] [INFO] [Open + Random] Vérification carte 3 (BLUE): [1|1|5|4]
+[2025-07-13T19:15:37.580Z] [INFO] [Open + Random] Vérification carte 4 (BLUE): [5|3|7|6](H)
+[2025-07-13T19:15:37.580Z] [INFO] [Open + Random] Vérification carte 5 (RED): [A|3|A|3]
+[2025-07-13T19:15:37.580Z] [INFO] [Open + Random] Vérification carte 6 (RED): [8|2|9|6]
+[2025-07-13T19:15:37.580Z] [INFO] [Open + Random] Vérification carte 7 (RED): [8|4|4|A]
+[2025-07-13T19:15:37.580Z] [INFO] [Open + Random] Vérification carte 8 (RED): [6|7|4|9](I)
+[2025-07-13T19:15:37.580Z] [INFO] [Open + Random] Vérification carte 9 (RED): [8|5|A|6]
+[2025-07-13T19:15:37.580Z] [INFO] [Open + Random] Vérification initiale terminée: 0 violations trouvées
+[2025-07-13T19:15:37.580Z] [INFO] [Open + Random] ✓ Initialisation correcte
+[2025-07-13T19:15:37.580Z] [INFO] [Open + Random] RED commence la partie
+[2025-07-13T19:15:37.580Z] [INFO] [Open + Random] === Tour 1 - RED ===
+[2025-07-13T19:15:37.580Z] [INFO] [Open + Random] Cartes en main avant le tour: 5
+[2025-07-13T19:15:37.580Z] [INFO] [Open + Random] Main RED[0]: [A|3|A|3]
+[2025-07-13T19:15:37.580Z] [INFO] [Open + Random] Main RED[1]: [8|2|9|6]
+[2025-07-13T19:15:37.580Z] [INFO] [Open + Random] Main RED[2]: [8|4|4|A]
+[2025-07-13T19:15:37.580Z] [INFO] [Open + Random] Main RED[3]: [6|7|4|9](I)
+[2025-07-13T19:15:37.580Z] [INFO] [Open + Random] Main RED[4]: [8|5|A|6]
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] RED joue carte[0]: [A|3|A|3] en position (0, 0)
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Vérification validité du coup: (0, 0)
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Position (0, 0) valide et libre
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Calcul captures pour carte [A|3|A|3] en (0,0)
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Pas de carte adjacente côté top
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Pas de carte adjacente côté right
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Pas de carte adjacente côté bottom
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Pas de carte adjacente côté left
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Total captures calculées: 0
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Captures potentielles calculées: 0
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] État du plateau avant le coup:
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Plateau row 0: [Empty] [Empty] [Empty] 
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Plateau row 1: [Empty] [Empty] [Empty] 
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Plateau row 2: [Empty] [Empty] [Empty] 
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Décompte avant le coup: BLUE=0, RED=0
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Début capture adjacentes pour [A|3|A|3] en (0,0)
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Décompte avant captures: BLUE=0, RED=1
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Décompte après captures: BLUE=0, RED=1
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Changements: BLUE=0, RED=0
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] État du plateau après le coup:
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Plateau row 0: [R:N] [Empty] [Empty] 
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Plateau row 1: [Empty] [Empty] [Empty] 
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Plateau row 2: [Empty] [Empty] [Empty] 
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Décompte après le coup: BLUE=0, RED=1
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Vérification post-coup tour 1
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Cartes en main: 5 → 4
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Cartes sur le plateau: 1, attendu: 1
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Total cartes: BLUE(5) + RED(4) + Plateau(1) = 10
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Tour 1 terminé avec succès
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] === Tour 2 - BLUE ===
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Cartes en main avant le tour: 5
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Main BLUE[0]: [6|7|4|9](I)
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Main BLUE[1]: [7|2|7|A](F)
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Main BLUE[2]: [2|8|8|4]
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Main BLUE[3]: [1|1|5|4]
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Main BLUE[4]: [5|3|7|6](H)
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] BLUE joue carte[0]: [6|7|4|9](I) en position (0, 1)
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Vérification validité du coup: (0, 1)
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Position (0, 1) valide et libre
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Calcul captures pour carte [6|7|4|9](I) en (0,1)
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Pas de carte adjacente côté top
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Pas de carte adjacente côté right
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Pas de carte adjacente côté bottom
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Comparaison left: 9 vs 3 - carte adverse [A|3|A|3]
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Capture détectée côté left: 9 > 3
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Total captures calculées: 1
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Captures potentielles calculées: 1
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] État du plateau avant le coup:
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Plateau row 0: [R:N] [Empty] [Empty] 
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Plateau row 1: [Empty] [Empty] [Empty] 
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Plateau row 2: [Empty] [Empty] [Empty] 
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Décompte avant le coup: BLUE=0, RED=1
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Début capture adjacentes pour [6|7|4|9](I) en (0,1)
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Décompte avant captures: BLUE=1, RED=1
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Décompte après captures: BLUE=2, RED=0
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Changements: BLUE=1, RED=-1
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] État du plateau après le coup:
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Plateau row 0: [B:N] [B:I] [Empty] 
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Plateau row 1: [Empty] [Empty] [Empty] 
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Plateau row 2: [Empty] [Empty] [Empty] 
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Décompte après le coup: BLUE=2, RED=0
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Vérification post-coup tour 2
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Cartes en main: 5 → 4
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Cartes sur le plateau: 2, attendu: 2
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Total cartes: BLUE(4) + RED(4) + Plateau(2) = 10
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Tour 2 terminé avec succès
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] === Tour 3 - RED ===
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Cartes en main avant le tour: 4
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Main RED[0]: [8|2|9|6]
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Main RED[1]: [8|4|4|A]
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Main RED[2]: [6|7|4|9](I)
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Main RED[3]: [8|5|A|6]
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] RED joue carte[0]: [8|2|9|6] en position (1, 1)
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Vérification validité du coup: (1, 1)
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Position (1, 1) valide et libre
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Calcul captures pour carte [8|2|9|6] en (1,1)
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Comparaison top: 8 vs 4 - carte adverse [6|7|4|9](I)
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Capture détectée côté top: 8 > 4
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Pas de carte adjacente côté right
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Pas de carte adjacente côté bottom
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Pas de carte adjacente côté left
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Total captures calculées: 1
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Captures potentielles calculées: 1
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] État du plateau avant le coup:
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Plateau row 0: [B:N] [B:I] [Empty] 
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Plateau row 1: [Empty] [Empty] [Empty] 
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Plateau row 2: [Empty] [Empty] [Empty] 
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Décompte avant le coup: BLUE=2, RED=0
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Début capture adjacentes pour [8|2|9|6] en (1,1)
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Décompte avant captures: BLUE=2, RED=1
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Décompte après captures: BLUE=1, RED=2
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Changements: BLUE=-1, RED=1
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] État du plateau après le coup:
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Plateau row 0: [B:N] [R:I] [Empty] 
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Plateau row 1: [Empty] [R:N] [Empty] 
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Plateau row 2: [Empty] [Empty] [Empty] 
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Décompte après le coup: BLUE=1, RED=2
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Vérification post-coup tour 3
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Cartes en main: 4 → 3
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Cartes sur le plateau: 3, attendu: 3
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Total cartes: BLUE(4) + RED(3) + Plateau(3) = 10
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Tour 3 terminé avec succès
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] === Tour 4 - BLUE ===
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Cartes en main avant le tour: 4
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Main BLUE[0]: [7|2|7|A](F)
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Main BLUE[1]: [2|8|8|4]
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Main BLUE[2]: [1|1|5|4]
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Main BLUE[3]: [5|3|7|6](H)
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] BLUE joue carte[0]: [7|2|7|A](F) en position (0, 2)
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Vérification validité du coup: (0, 2)
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Position (0, 2) valide et libre
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Calcul captures pour carte [7|2|7|A](F) en (0,2)
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Pas de carte adjacente côté top
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Pas de carte adjacente côté right
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Pas de carte adjacente côté bottom
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Comparaison left: 10 vs 7 - carte adverse [6|7|4|9](I)
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Capture détectée côté left: 10 > 7
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Total captures calculées: 1
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Captures potentielles calculées: 1
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] État du plateau avant le coup:
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Plateau row 0: [B:N] [R:I] [Empty] 
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Plateau row 1: [Empty] [R:N] [Empty] 
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Plateau row 2: [Empty] [Empty] [Empty] 
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Décompte avant le coup: BLUE=1, RED=2
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Début capture adjacentes pour [7|2|7|A](F) en (0,2)
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Décompte avant captures: BLUE=2, RED=2
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Décompte après captures: BLUE=3, RED=1
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Changements: BLUE=1, RED=-1
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] État du plateau après le coup:
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Plateau row 0: [B:N] [B:I] [B:F] 
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Plateau row 1: [Empty] [R:N] [Empty] 
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Plateau row 2: [Empty] [Empty] [Empty] 
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Décompte après le coup: BLUE=3, RED=1
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Vérification post-coup tour 4
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Cartes en main: 4 → 3
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Cartes sur le plateau: 4, attendu: 4
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Total cartes: BLUE(3) + RED(3) + Plateau(4) = 10
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Tour 4 terminé avec succès
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] === Tour 5 - RED ===
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Cartes en main avant le tour: 3
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Main RED[0]: [8|4|4|A]
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Main RED[1]: [6|7|4|9](I)
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Main RED[2]: [8|5|A|6]
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] RED joue carte[0]: [8|4|4|A] en position (1, 2)
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Vérification validité du coup: (1, 2)
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Position (1, 2) valide et libre
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Calcul captures pour carte [8|4|4|A] en (1,2)
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Comparaison top: 8 vs 7 - carte adverse [7|2|7|A](F)
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Capture détectée côté top: 8 > 7
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Pas de carte adjacente côté right
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Pas de carte adjacente côté bottom
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Pas de capture côté left: même propriétaire
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Total captures calculées: 1
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Captures potentielles calculées: 1
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] État du plateau avant le coup:
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Plateau row 0: [B:N] [B:I] [B:F] 
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Plateau row 1: [Empty] [R:N] [Empty] 
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Plateau row 2: [Empty] [Empty] [Empty] 
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Décompte avant le coup: BLUE=3, RED=1
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Début capture adjacentes pour [8|4|4|A] en (1,2)
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Décompte avant captures: BLUE=3, RED=2
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Décompte après captures: BLUE=2, RED=3
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Changements: BLUE=-1, RED=1
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] État du plateau après le coup:
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Plateau row 0: [B:N] [B:I] [R:F] 
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Plateau row 1: [Empty] [R:N] [R:N] 
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Plateau row 2: [Empty] [Empty] [Empty] 
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Décompte après le coup: BLUE=2, RED=3
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Vérification post-coup tour 5
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Cartes en main: 3 → 2
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Cartes sur le plateau: 5, attendu: 5
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Total cartes: BLUE(3) + RED(2) + Plateau(5) = 10
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Tour 5 terminé avec succès
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] === Tour 6 - BLUE ===
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Cartes en main avant le tour: 3
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Main BLUE[0]: [2|8|8|4]
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Main BLUE[1]: [1|1|5|4]
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Main BLUE[2]: [5|3|7|6](H)
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] BLUE joue carte[0]: [2|8|8|4] en position (1, 0)
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Vérification validité du coup: (1, 0)
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Position (1, 0) valide et libre
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Calcul captures pour carte [2|8|8|4] en (1,0)
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Pas de capture côté top: même propriétaire
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Comparaison right: 8 vs 6 - carte adverse [8|2|9|6]
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Capture détectée côté right: 8 > 6
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Pas de carte adjacente côté bottom
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Pas de carte adjacente côté left
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Total captures calculées: 1
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Captures potentielles calculées: 1
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] État du plateau avant le coup:
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Plateau row 0: [B:N] [B:I] [R:F] 
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Plateau row 1: [Empty] [R:N] [R:N] 
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Plateau row 2: [Empty] [Empty] [Empty] 
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Décompte avant le coup: BLUE=2, RED=3
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Début capture adjacentes pour [2|8|8|4] en (1,0)
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Décompte avant captures: BLUE=3, RED=3
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Décompte après captures: BLUE=4, RED=2
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Changements: BLUE=1, RED=-1
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] État du plateau après le coup:
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Plateau row 0: [B:N] [B:I] [R:F] 
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Plateau row 1: [B:N] [B:N] [R:N] 
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Plateau row 2: [Empty] [Empty] [Empty] 
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Décompte après le coup: BLUE=4, RED=2
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Vérification post-coup tour 6
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Cartes en main: 3 → 2
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Cartes sur le plateau: 6, attendu: 6
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Total cartes: BLUE(2) + RED(2) + Plateau(6) = 10
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Tour 6 terminé avec succès
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] === Tour 7 - RED ===
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Cartes en main avant le tour: 2
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Main RED[0]: [6|7|4|9](I)
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Main RED[1]: [8|5|A|6]
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] RED joue carte[0]: [6|7|4|9](I) en position (2, 0)
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Vérification validité du coup: (2, 0)
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Position (2, 0) valide et libre
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Calcul captures pour carte [6|7|4|9](I) en (2,0)
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Comparaison top: 6 vs 8 - carte adverse [2|8|8|4]
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Pas de carte adjacente côté right
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Pas de carte adjacente côté bottom
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Pas de carte adjacente côté left
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Total captures calculées: 0
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Captures potentielles calculées: 0
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] État du plateau avant le coup:
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Plateau row 0: [B:N] [B:I] [R:F] 
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Plateau row 1: [B:N] [B:N] [R:N] 
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Plateau row 2: [Empty] [Empty] [Empty] 
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Décompte avant le coup: BLUE=4, RED=2
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Début capture adjacentes pour [6|7|4|9](I) en (2,0)
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Décompte avant captures: BLUE=4, RED=3
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Décompte après captures: BLUE=4, RED=3
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Changements: BLUE=0, RED=0
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] État du plateau après le coup:
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Plateau row 0: [B:N] [B:I] [R:F] 
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Plateau row 1: [B:N] [B:N] [R:N] 
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Plateau row 2: [R:I] [Empty] [Empty] 
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Décompte après le coup: BLUE=4, RED=3
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Vérification post-coup tour 7
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Cartes en main: 2 → 1
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Cartes sur le plateau: 7, attendu: 7
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Total cartes: BLUE(2) + RED(1) + Plateau(7) = 10
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Tour 7 terminé avec succès
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] === Tour 8 - BLUE ===
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Cartes en main avant le tour: 2
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Main BLUE[0]: [1|1|5|4]
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Main BLUE[1]: [5|3|7|6](H)
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] BLUE joue carte[1]: [5|3|7|6](H) en position (2, 2)
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Vérification validité du coup: (2, 2)
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Position (2, 2) valide et libre
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Calcul captures pour carte [5|3|7|6](H) en (2,2)
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Comparaison top: 5 vs 4 - carte adverse [8|4|4|A]
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Capture détectée côté top: 5 > 4
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Pas de carte adjacente côté right
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Pas de carte adjacente côté bottom
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Pas de carte adjacente côté left
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Total captures calculées: 1
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Captures potentielles calculées: 1
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] État du plateau avant le coup:
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Plateau row 0: [B:N] [B:I] [R:F] 
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Plateau row 1: [B:N] [B:N] [R:N] 
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Plateau row 2: [R:I] [Empty] [Empty] 
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Décompte avant le coup: BLUE=4, RED=3
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Début capture adjacentes pour [5|3|7|6](H) en (2,2)
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Décompte avant captures: BLUE=5, RED=3
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Décompte après captures: BLUE=6, RED=2
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Changements: BLUE=1, RED=-1
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] État du plateau après le coup:
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Plateau row 0: [B:N] [B:I] [R:F] 
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Plateau row 1: [B:N] [B:N] [B:N] 
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Plateau row 2: [R:I] [Empty] [B:H] 
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Décompte après le coup: BLUE=6, RED=2
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Vérification post-coup tour 8
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Cartes en main: 2 → 1
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Cartes sur le plateau: 8, attendu: 8
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Total cartes: BLUE(1) + RED(1) + Plateau(8) = 10
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Tour 8 terminé avec succès
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] === Tour 9 - RED ===
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Cartes en main avant le tour: 1
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Main RED[0]: [8|5|A|6]
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] RED joue carte[0]: [8|5|A|6] en position (2, 1)
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Vérification validité du coup: (2, 1)
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Position (2, 1) valide et libre
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Calcul captures pour carte [8|5|A|6] en (2,1)
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Comparaison top: 8 vs 9 - carte adverse [8|2|9|6]
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Comparaison right: 5 vs 6 - carte adverse [5|3|7|6](H)
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Pas de carte adjacente côté bottom
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Pas de capture côté left: même propriétaire
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Total captures calculées: 0
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Captures potentielles calculées: 0
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] État du plateau avant le coup:
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Plateau row 0: [B:N] [B:I] [R:F] 
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Plateau row 1: [B:N] [B:N] [B:N] 
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Plateau row 2: [R:I] [Empty] [B:H] 
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Décompte avant le coup: BLUE=6, RED=2
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Début capture adjacentes pour [8|5|A|6] en (2,1)
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Décompte avant captures: BLUE=6, RED=3
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Décompte après captures: BLUE=6, RED=3
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Changements: BLUE=0, RED=0
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] État du plateau après le coup:
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Plateau row 0: [B:N] [B:I] [R:F] 
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Plateau row 1: [B:N] [B:N] [B:N] 
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Plateau row 2: [R:I] [R:N] [B:H] 
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Décompte après le coup: BLUE=6, RED=3
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Vérification post-coup tour 9
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Cartes en main: 1 → 0
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Cartes sur le plateau: 9, attendu: 9
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Total cartes: BLUE(1) + RED(0) + Plateau(9) = 10
+[2025-07-13T19:15:37.581Z] [INFO] [Open + Random] Tour 9 terminé avec succès
