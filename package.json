@@ -1,6 +1,6 @@
 {
   "name": "triple-triad",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "Implémentation du jeu Triple Triad avec règles avancées",
   "main": "src/main.js",
   "scripts": {
@@ -9,7 +9,9 @@
     "test:ai": "node tests/test-ai-vs-ai.js",
     "test:v4": "node tests/test-v0-4.js",
     "test:v4-extended": "node tests/test-v0-4-extended.js",
-    "test:plus": "node tests/test-perfect-plus-same.js"
+    "test:plus": "node tests/test-perfect-plus-same.js",
+    "test:v5": "node tests/test-v0-5.js",
+    "test:v5-advanced": "node tests/test-v0-5-advanced.js"
   },
   "keywords": ["game", "triple-triad", "cards"],
   "author": "Franck",

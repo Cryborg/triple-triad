@@ -4,7 +4,7 @@ const Player = require('./Player');
 const CardDatabaseV3 = require('./CardDatabaseV3');
 
 class Game {
-    constructor(rules = { open: false, random: false, elemental: false, same: false, plus: false, sameWall: false }) {
+    constructor(rules = { open: false, random: false, elemental: false, same: false, plus: false, sameWall: false, combo: false }) {
         this.board = new Board();
         this.players = {
             BLUE: new Player('BLUE', false),
@@ -22,8 +22,8 @@ class Game {
         this.setupPlayerCollections();
         this.distributeCards();
         this.currentPlayer = Math.random() < 0.5 ? 'BLUE' : 'RED';
-        console.log(`\n=== Triple Triad v0.4 ===`);
-        console.log(`Rules: Open=${this.rules.open}, Random=${this.rules.random}, Elemental=${this.rules.elemental}, Same=${this.rules.same}, Plus=${this.rules.plus}, Same Wall=${this.rules.sameWall}`);
+        console.log(`\n=== Triple Triad v0.5 ===`);
+        console.log(`Rules: Open=${this.rules.open}, Random=${this.rules.random}, Elemental=${this.rules.elemental}, Same=${this.rules.same}, Plus=${this.rules.plus}, Same Wall=${this.rules.sameWall}, Combo=${this.rules.combo}`);
         console.log(`${this.currentPlayer} starts the game!\n`);
     }
 
@@ -159,25 +159,37 @@ class Game {
     }
 
     resolveCaptures(placedCard, row, col) {
-        const cardsToFlipThisTurn = new Set();
-        const adjacentCards = this.getAdjacentCardsInfo(row, col);
+        const cardsFlippedThisTurn = new Set();
+        const comboCheckQueue = [];
+        let specialRuleTriggered = false;
         
         if (this.rules.same || this.rules.plus) {
-            if (this.rules.same) {
-                this.checkSameRule(placedCard, row, col, adjacentCards, cardsToFlipThisTurn);
-            }
+            const initialCaptures = this.checkSpecialRules(placedCard, row, col);
             
-            if (this.rules.plus) {
-                this.checkPlusRule(placedCard, adjacentCards, cardsToFlipThisTurn);
-            }
-            
-            if (cardsToFlipThisTurn.size > 0) {
-                this.applySpecialRuleCaptures(cardsToFlipThisTurn, placedCard);
-                return;
+            if (initialCaptures.length > 0) {
+                specialRuleTriggered = true;
+                initialCaptures.forEach(card => {
+                    cardsFlippedThisTurn.add(card);
+                    comboCheckQueue.push(card);
+                });
+                
+                this.logSpecialCaptures(initialCaptures, placedCard);
             }
         }
         
-        this.applyBasicCaptures(placedCard, row, col, adjacentCards);
+        if (this.rules.combo && specialRuleTriggered) {
+            this.processComboChain(comboCheckQueue, cardsFlippedThisTurn, placedCard.owner);
+        }
+        
+        if (!specialRuleTriggered) {
+            const basicCaptures = this.getBasicCaptures(placedCard, row, col);
+            basicCaptures.forEach(card => cardsFlippedThisTurn.add(card));
+            if (basicCaptures.length > 0) {
+                console.log(`${placedCard.owner} captured ${basicCaptures.length} card(s)!`);
+            }
+        }
+        
+        this.applyFinalCaptures(cardsFlippedThisTurn, placedCard.owner);
     }
 
     getAdjacentCardsInfo(row, col) {
@@ -217,7 +229,24 @@ class Game {
         ];
     }
 
-    checkSameRule(placedCard, row, col, adjacentCards, cardsToFlipThisTurn) {
+    checkSpecialRules(placedCard, row, col) {
+        const adjacentCards = this.getAdjacentCardsInfo(row, col);
+        const captures = [];
+        
+        if (this.rules.same) {
+            const sameCaptures = this.getSameCaptures(placedCard, row, col, adjacentCards);
+            captures.push(...sameCaptures);
+        }
+        
+        if (this.rules.plus) {
+            const plusCaptures = this.getPlusCaptures(placedCard, adjacentCards);
+            captures.push(...plusCaptures);
+        }
+        
+        return [...new Set(captures)];
+    }
+
+    getSameCaptures(placedCard, row, col, adjacentCards) {
         let sameMatches = 0;
         const sameCandidates = [];
 
@@ -249,17 +278,16 @@ class Game {
         }
 
         if (sameMatches >= 2) {
-            sameCandidates.forEach(card => {
-                if (card.owner !== placedCard.owner) {
-                    cardsToFlipThisTurn.add(card);
-                }
-            });
+            return sameCandidates.filter(card => card.owner !== placedCard.owner);
         }
+        
+        return [];
     }
 
-    checkPlusRule(placedCard, adjacentCards, cardsToFlipThisTurn) {
+    getPlusCaptures(placedCard, adjacentCards) {
         const validPairs = [];
         const adjacentCardsArray = adjacentCards.filter(info => info.card);
+        const captures = [];
 
         for (let i = 0; i < adjacentCardsArray.length; i++) {
             for (let j = i + 1; j < adjacentCardsArray.length; j++) {
@@ -279,32 +307,76 @@ class Game {
             validPairs.forEach(pair => {
                 pair.forEach(card => {
                     if (card.owner !== placedCard.owner) {
-                        cardsToFlipThisTurn.add(card);
+                        captures.push(card);
                     }
                 });
             });
         }
+        
+        return captures;
     }
 
-    applySpecialRuleCaptures(cardsToFlipThisTurn, placedCard) {
-        let capturedCount = 0;
-        const ruleTypes = [];
-
-        if (this.rules.same) ruleTypes.push('Same');
-        if (this.rules.plus) ruleTypes.push('Plus');
-
-        cardsToFlipThisTurn.forEach(card => {
-            card.changeOwner(placedCard.owner);
-            capturedCount++;
-        });
-
-        if (capturedCount > 0) {
-            console.log(`${placedCard.owner} captured ${capturedCount} card(s) by ${ruleTypes.join('/')}!`);
+    processComboChain(comboCheckQueue, cardsFlippedThisTurn, currentOwner) {
+        let comboCount = 0;
+        
+        while (comboCheckQueue.length > 0) {
+            const cardToComboCheck = comboCheckQueue.shift();
+            const cardPosition = this.findCardPosition(cardToComboCheck);
+            
+            if (!cardPosition) continue;
+            
+            const adjacentCards = this.getAdjacentCardsInfo(cardPosition.row, cardPosition.col);
+            
+            for (const { side, card, adjacentSide, position } of adjacentCards) {
+                if (card && card.owner !== currentOwner && !cardsFlippedThisTurn.has(card)) {
+                    const cardToComboRank = this.getEffectiveRankForCombo(cardToComboCheck, side, cardPosition);
+                    const neighborRank = this.getEffectiveRankForCombo(card, adjacentSide, position);
+                    
+                    if (cardToComboRank > neighborRank) {
+                        cardsFlippedThisTurn.add(card);
+                        comboCheckQueue.push(card);
+                        comboCount++;
+                    }
+                }
+            }
+        }
+        
+        if (comboCount > 0) {
+            console.log(`${currentOwner} captured ${comboCount} additional card(s) by Combo!`);
         }
     }
 
-    applyBasicCaptures(placedCard, row, col, adjacentCards) {
-        let capturedCount = 0;
+    findCardPosition(targetCard) {
+        for (let row = 0; row < 3; row++) {
+            for (let col = 0; col < 3; col++) {
+                if (this.board.getCard(row, col) === targetCard) {
+                    return { row, col };
+                }
+            }
+        }
+        return null;
+    }
+
+    getEffectiveRankForCombo(card, side, position) {
+        if (this.rules.elemental) {
+            const squareElement = this.board.getSquareElement(position.row, position.col);
+            return card.getEffectiveRank(side, squareElement, true);
+        } else {
+            return card.getRank(side);
+        }
+    }
+
+    logSpecialCaptures(captures, placedCard) {
+        const ruleTypes = [];
+        if (this.rules.same) ruleTypes.push('Same');
+        if (this.rules.plus) ruleTypes.push('Plus');
+        
+        console.log(`${placedCard.owner} captured ${captures.length} card(s) by ${ruleTypes.join('/')}!`);
+    }
+
+    getBasicCaptures(placedCard, row, col) {
+        const captures = [];
+        const adjacentCards = this.getAdjacentCardsInfo(row, col);
         const placedSquareElement = this.board.getSquareElement(row, col);
 
         for (const { side, card, adjacentSide, position } of adjacentCards) {
@@ -321,15 +393,18 @@ class Game {
                 }
                 
                 if (placedRank > adjacentRank) {
-                    card.changeOwner(placedCard.owner);
-                    capturedCount++;
+                    captures.push(card);
                 }
             }
         }
 
-        if (capturedCount > 0) {
-            console.log(`${placedCard.owner} captured ${capturedCount} card(s)!`);
-        }
+        return captures;
+    }
+
+    applyFinalCaptures(cardsFlippedThisTurn, newOwner) {
+        cardsFlippedThisTurn.forEach(card => {
+            card.changeOwner(newOwner);
+        });
     }
 
     isGameOver() {
