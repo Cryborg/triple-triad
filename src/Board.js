@@ -57,6 +57,25 @@ class Board {
         return count;
     }
 
+    getAllCardsOnBoardWithOwners() {
+        const cardsWithOwners = [];
+        
+        for (let row = 0; row < 3; row++) {
+            for (let col = 0; col < 3; col++) {
+                const card = this.grid[row][col];
+                if (card) {
+                    cardsWithOwners.push({
+                        card: card,
+                        owner: card.owner,
+                        position: { row, col }
+                    });
+                }
+            }
+        }
+        
+        return cardsWithOwners;
+    }
+
     isFull() {
         for (let row = 0; row < 3; row++) {
             for (let col = 0; col < 3; col++) {

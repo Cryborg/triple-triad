@@ -14,6 +14,28 @@ class Player {
         this.collection.push(card);
     }
 
+    removeCardFromCollection(card) {
+        const index = this.collection.indexOf(card);
+        if (index > -1) {
+            this.collection.splice(index, 1);
+            return true;
+        }
+        return false;
+    }
+
+    getCardsControlledOnBoard(board) {
+        const controlledCards = [];
+        for (let row = 0; row < 3; row++) {
+            for (let col = 0; col < 3; col++) {
+                const card = board.getCard(row, col);
+                if (card && card.owner === this.id) {
+                    controlledCards.push(card);
+                }
+            }
+        }
+        return controlledCards;
+    }
+
     clearHand() {
         this.hand = [];
     }

@@ -4,7 +4,7 @@ const Player = require('./Player');
 const CardDatabaseV3 = require('./CardDatabaseV3');
 
 class Game {
-    constructor(rules = { open: false, random: false, elemental: false, same: false, plus: false, sameWall: false, combo: false }) {
+    constructor(rules = { open: false, random: false, elemental: false, same: false, plus: false, sameWall: false, combo: false, suddenDeath: false, tradeRule: 'One' }) {
         this.board = new Board();
         this.players = {
             BLUE: new Player('BLUE', false),
@@ -12,6 +12,7 @@ class Game {
         };
         this.currentPlayer = null;
         this.turnCount = 0;
+        this.suddenDeathCounter = 0;
         this.rules = rules;
     }
 
@@ -22,8 +23,8 @@ class Game {
         this.setupPlayerCollections();
         this.distributeCards();
         this.currentPlayer = Math.random() < 0.5 ? 'BLUE' : 'RED';
-        console.log(`\n=== Triple Triad v0.5 ===`);
-        console.log(`Rules: Open=${this.rules.open}, Random=${this.rules.random}, Elemental=${this.rules.elemental}, Same=${this.rules.same}, Plus=${this.rules.plus}, Same Wall=${this.rules.sameWall}, Combo=${this.rules.combo}`);
+        console.log(`\n=== Triple Triad v0.6 ===`);
+        console.log(`Rules: Open=${this.rules.open}, Random=${this.rules.random}, Elemental=${this.rules.elemental}, Same=${this.rules.same}, Plus=${this.rules.plus}, Same Wall=${this.rules.sameWall}, Combo=${this.rules.combo}, Sudden Death=${this.rules.suddenDeath}, Trade=${this.rules.tradeRule}`);
         console.log(`${this.currentPlayer} starts the game!\n`);
     }
 
@@ -407,33 +408,254 @@ class Game {
         });
     }
 
-    isGameOver() {
-        return this.board.isFull();
+    checkGameEnd() {
+        return this.turnCount >= 9;
     }
 
-    getWinner() {
+    determineWinner() {
         const counts = this.board.countCardsByOwner();
         
         const bluePlayer = this.players.BLUE;
         const redPlayer = this.players.RED;
         
-        let blueTotal = counts.BLUE || 0;
-        let redTotal = counts.RED || 0;
+        let blueScore = counts.BLUE || 0;
+        let redScore = counts.RED || 0;
         
-        if (bluePlayer.hasCards()) blueTotal += bluePlayer.hand.length;
-        if (redPlayer.hasCards()) redTotal += redPlayer.hand.length;
+        if (bluePlayer.hasCards()) blueScore += bluePlayer.hand.length;
+        if (redPlayer.hasCards()) redScore += redPlayer.hand.length;
 
         console.log(`\nFinal Score:`);
-        console.log(`BLUE: ${blueTotal} cards`);
-        console.log(`RED: ${redTotal} cards`);
+        console.log(`BLUE: ${blueScore} cards`);
+        console.log(`RED: ${redScore} cards`);
 
-        if (blueTotal > redTotal) {
-            return 'BLUE';
-        } else if (redTotal > blueTotal) {
-            return 'RED';
+        if (blueScore > redScore) {
+            console.log('BLUE wins!');
+            this.applyTradeRule(bluePlayer, redPlayer, blueScore, redScore);
+            this.suddenDeathCounter = 0;
+            return { result: 'WINNER_DETERMINED', winner: 'BLUE' };
+        } else if (redScore > blueScore) {
+            console.log('RED wins!');
+            this.applyTradeRule(redPlayer, bluePlayer, redScore, blueScore);
+            this.suddenDeathCounter = 0;
+            return { result: 'WINNER_DETERMINED', winner: 'RED' };
         } else {
-            return 'DRAW';
+            if (this.rules.suddenDeath) {
+                this.suddenDeathCounter++;
+                
+                if (this.suddenDeathCounter < 5) {
+                    console.log(`\nMort Subite! Nouvelle partie... (${this.suddenDeathCounter}/5)`);
+                    this.initializeSuddenDeath();
+                    return { result: 'SUDDEN_DEATH_CONTINUE' };
+                } else {
+                    console.log('\nÉgalité finale après Mort Subite!');
+                    return { result: 'FINAL_DRAW' };
+                }
+            } else {
+                console.log('\nC\'est une égalité!');
+                return { result: 'DRAW' };
+            }
         }
+    }
+
+    applyTradeRule(winnerPlayer, loserPlayer, winnerScore, loserScore) {
+        console.log(`\nApplying trade rule: ${this.rules.tradeRule}`);
+        
+        switch (this.rules.tradeRule) {
+            case 'One':
+                this.applyOneRule(winnerPlayer, loserPlayer);
+                break;
+            case 'Diff':
+                const diff = winnerScore - loserScore;
+                this.applyDiffRule(winnerPlayer, loserPlayer, diff);
+                break;
+            case 'Direct':
+                this.applyDirectRule(winnerPlayer, loserPlayer);
+                break;
+            case 'All':
+                this.applyAllRule(winnerPlayer, loserPlayer);
+                break;
+            default:
+                console.log('Unknown trade rule, no cards exchanged.');
+        }
+    }
+
+    applyOneRule(winnerPlayer, loserPlayer) {
+        if (loserPlayer.collection.length === 0) {
+            console.log(`${loserPlayer.id} has no cards to trade.`);
+            return;
+        }
+
+        let chosenCard;
+        if (winnerPlayer.isAI) {
+            chosenCard = this.chooseCardForAI(loserPlayer.collection);
+        } else {
+            console.log(`\n${winnerPlayer.id} chooses 1 card from ${loserPlayer.id}'s collection:`);
+            loserPlayer.collection.forEach((card, index) => {
+                console.log(`${index}: ${card.toString()}`);
+            });
+            
+            const index = 0;
+            chosenCard = loserPlayer.collection[index];
+        }
+
+        if (loserPlayer.removeCardFromCollection(chosenCard)) {
+            winnerPlayer.addCardToCollection(chosenCard);
+            console.log(`${winnerPlayer.id} takes ${chosenCard.toString()} from ${loserPlayer.id}`);
+        }
+    }
+
+    applyDiffRule(winnerPlayer, loserPlayer, diff) {
+        if (loserPlayer.collection.length === 0) {
+            console.log(`${loserPlayer.id} has no cards to trade.`);
+            return;
+        }
+
+        const cardsToTake = Math.min(diff, loserPlayer.collection.length);
+        console.log(`${winnerPlayer.id} takes ${cardsToTake} card(s) from ${loserPlayer.id}`);
+
+        for (let i = 0; i < cardsToTake; i++) {
+            let chosenCard;
+            if (winnerPlayer.isAI) {
+                chosenCard = this.chooseCardForAI(loserPlayer.collection);
+            } else {
+                console.log(`\nChoose card ${i + 1}/${cardsToTake} from ${loserPlayer.id}'s collection:`);
+                loserPlayer.collection.forEach((card, index) => {
+                    console.log(`${index}: ${card.toString()}`);
+                });
+                
+                const index = 0;
+                chosenCard = loserPlayer.collection[index];
+            }
+
+            if (loserPlayer.removeCardFromCollection(chosenCard)) {
+                winnerPlayer.addCardToCollection(chosenCard);
+                console.log(`${winnerPlayer.id} takes ${chosenCard.toString()}`);
+            }
+        }
+    }
+
+    applyDirectRule(winnerPlayer, loserPlayer) {
+        const boardCards = this.board.getAllCardsOnBoardWithOwners();
+        let winnerCardsMoved = 0;
+        let loserCardsMoved = 0;
+
+        boardCards.forEach(({ card, owner }) => {
+            if (owner === winnerPlayer.id) {
+                const cardInCollection = winnerPlayer.collection.find(c => 
+                    c.originalRanks.top === card.originalRanks.top &&
+                    c.originalRanks.right === card.originalRanks.right &&
+                    c.originalRanks.bottom === card.originalRanks.bottom &&
+                    c.originalRanks.left === card.originalRanks.left &&
+                    c.element === card.element
+                );
+                
+                if (!cardInCollection) {
+                    const cardCopy = new (require('./Card'))(
+                        card.originalRanks.top,
+                        card.originalRanks.right,
+                        card.originalRanks.bottom,
+                        card.originalRanks.left,
+                        winnerPlayer.id,
+                        card.element
+                    );
+                    winnerPlayer.addCardToCollection(cardCopy);
+                    winnerCardsMoved++;
+                }
+            } else if (owner === loserPlayer.id) {
+                const cardInCollection = loserPlayer.collection.find(c => 
+                    c.originalRanks.top === card.originalRanks.top &&
+                    c.originalRanks.right === card.originalRanks.right &&
+                    c.originalRanks.bottom === card.originalRanks.bottom &&
+                    c.originalRanks.left === card.originalRanks.left &&
+                    c.element === card.element
+                );
+                
+                if (!cardInCollection) {
+                    const cardCopy = new (require('./Card'))(
+                        card.originalRanks.top,
+                        card.originalRanks.right,
+                        card.originalRanks.bottom,
+                        card.originalRanks.left,
+                        loserPlayer.id,
+                        card.element
+                    );
+                    loserPlayer.addCardToCollection(cardCopy);
+                    loserCardsMoved++;
+                }
+            }
+        });
+
+        console.log(`Direct rule: ${winnerPlayer.id} gained ${winnerCardsMoved} cards, ${loserPlayer.id} gained ${loserCardsMoved} cards`);
+    }
+
+    applyAllRule(winnerPlayer, loserPlayer) {
+        const cardsToMove = [...loserPlayer.collection];
+        console.log(`${winnerPlayer.id} takes all ${cardsToMove.length} cards from ${loserPlayer.id}`);
+
+        cardsToMove.forEach(card => {
+            loserPlayer.removeCardFromCollection(card);
+            winnerPlayer.addCardToCollection(card);
+        });
+    }
+
+    chooseCardForAI(collection) {
+        return collection.reduce((best, current) => {
+            const bestTotal = best.originalRanks.top + best.originalRanks.right + best.originalRanks.bottom + best.originalRanks.left;
+            const currentTotal = current.originalRanks.top + current.originalRanks.right + current.originalRanks.bottom + current.originalRanks.left;
+            return currentTotal > bestTotal ? current : best;
+        });
+    }
+
+    initializeSuddenDeath() {
+        const blueControlledCards = this.players.BLUE.getCardsControlledOnBoard(this.board);
+        const redControlledCards = this.players.RED.getCardsControlledOnBoard(this.board);
+
+        if (this.players.BLUE.hasCards()) {
+            blueControlledCards.push(...this.players.BLUE.hand);
+        }
+        if (this.players.RED.hasCards()) {
+            redControlledCards.push(...this.players.RED.hand);
+        }
+
+        this.board = new Board();
+        if (this.rules.elemental) {
+            this.board.initializeElementalSquares();
+        }
+
+        this.players.BLUE.clearHand();
+        this.players.RED.clearHand();
+
+        blueControlledCards.forEach(card => {
+            const newCard = new (require('./Card'))(
+                card.originalRanks.top,
+                card.originalRanks.right,
+                card.originalRanks.bottom,
+                card.originalRanks.left,
+                'BLUE',
+                card.element
+            );
+            this.players.BLUE.addCardToHand(newCard);
+        });
+
+        redControlledCards.forEach(card => {
+            const newCard = new (require('./Card'))(
+                card.originalRanks.top,
+                card.originalRanks.right,
+                card.originalRanks.bottom,
+                card.originalRanks.left,
+                'RED',
+                card.element
+            );
+            this.players.RED.addCardToHand(newCard);
+        });
+
+        this.turnCount = 0;
+        this.currentPlayer = Math.random() < 0.5 ? 'BLUE' : 'RED';
+
+        console.log(`\nSudden Death initialized!`);
+        console.log(`BLUE starts with ${this.players.BLUE.hand.length} cards`);
+        console.log(`RED starts with ${this.players.RED.hand.length} cards`);
+        console.log(`${this.currentPlayer} starts the sudden death round!\n`);
     }
 
     displayGameState() {
