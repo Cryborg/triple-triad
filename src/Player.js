@@ -103,7 +103,7 @@ class Player {
         };
     }
 
-    getSmartMove(board, opponentHand = null, elementalRuleActive = false) {
+    getSmartMove(board, opponentHand = null, elementalRuleActive = false, gameRules = {}) {
         if (!this.isAI || this.hand.length === 0) {
             return null;
         }
@@ -113,60 +113,278 @@ class Player {
             return null;
         }
 
-        let bestCaptureMove = null;
-        let maxCaptures = -1;
+        let bestMove = null;
+        let maxScore = -1;
 
-        // Priority 1: Look for capture moves
+        // Evaluate all possible moves with sophisticated scoring
         for (let cardIndex = 0; cardIndex < this.hand.length; cardIndex++) {
             const card = this.hand[cardIndex];
             
             for (const position of emptyPositions) {
-                const captures = this.countPotentialCaptures(board, card, position.row, position.col, elementalRuleActive);
+                const score = this.evaluateMove(board, card, position.row, position.col, elementalRuleActive, gameRules);
                 
-                if (captures > maxCaptures) {
-                    maxCaptures = captures;
-                    bestCaptureMove = {
+                if (score > maxScore) {
+                    maxScore = score;
+                    bestMove = {
                         cardIndex,
                         row: position.row,
-                        col: position.col
+                        col: position.col,
+                        score: score
                     };
                 }
             }
         }
 
-        // If we found a capture move, return it
-        if (bestCaptureMove && maxCaptures > 0) {
-            return bestCaptureMove;
+        return bestMove || this.getRandomMove(board);
+    }
+
+    /**
+     * Evaluate a move with sophisticated scoring that considers all rules
+     * @param {Board} board - The game board
+     * @param {Card} card - The card to place
+     * @param {number} row - Row position
+     * @param {number} col - Column position
+     * @param {boolean} elementalRuleActive - Whether elemental rule is active
+     * @param {Object} gameRules - Game rules configuration
+     * @returns {number} Move score (higher is better)
+     */
+    evaluateMove(board, card, row, col, elementalRuleActive = false, gameRules = {}) {
+        let score = 0;
+
+        // Base score: basic captures
+        const basicCaptures = this.countPotentialCaptures(board, card, row, col, elementalRuleActive);
+        score += basicCaptures * 10;
+
+        // Bonus for special rule triggers
+        if (gameRules.same || gameRules.plus) {
+            const specialCaptures = this.countSpecialRuleCaptures(board, card, row, col, gameRules);
+            score += specialCaptures * 25; // Higher value for special captures
         }
 
-        // Priority 2: Look for blocking moves (prevent opponent captures)
-        let bestBlockMove = null;
-        let maxBlocks = -1;
+        // Combo potential (if combo rule is active)
+        if (gameRules.combo && (gameRules.same || gameRules.plus)) {
+            const comboCaptures = this.estimateComboCaptures(board, card, row, col, elementalRuleActive);
+            score += comboCaptures * 15;
+        }
 
-        for (let cardIndex = 0; cardIndex < this.hand.length; cardIndex++) {
-            const card = this.hand[cardIndex];
-            
-            for (const position of emptyPositions) {
-                const blocks = this.countPotentialBlocks(board, card, position.row, position.col, elementalRuleActive);
+        // Strategic positioning score
+        score += this.evaluateStrategicPosition(board, card, row, col, elementalRuleActive);
+
+        // Defensive score (protecting own cards)
+        const protectionValue = this.evaluateProtection(board, card, row, col, elementalRuleActive);
+        score += protectionValue * 5;
+
+        // Card value consideration (save strong cards for better opportunities)
+        const cardStrength = this.evaluateCardStrength(card);
+        const boardState = this.evaluateBoardState(board);
+        if (boardState.early && cardStrength > 8) {
+            score -= 5; // Penalty for using strong cards early
+        }
+
+        return score;
+    }
+
+    /**
+     * Count potential captures from Same/Plus rules
+     */
+    countSpecialRuleCaptures(board, card, row, col, gameRules) {
+        const adjacent = board.getAdjacentCards(row, col);
+        let captures = 0;
+
+        if (gameRules.same) {
+            captures += this.checkSameRule(card, adjacent, board, row, col);
+        }
+
+        if (gameRules.plus) {
+            captures += this.checkPlusRule(card, adjacent, board, row, col);
+        }
+
+        return captures;
+    }
+
+    /**
+     * Check for Same rule triggers
+     */
+    checkSameRule(card, adjacent, board, row, col) {
+        const sides = ['top', 'right', 'bottom', 'left'];
+        const adjacentCards = [adjacent.top, adjacent.right, adjacent.bottom, adjacent.left];
+        let sameCount = 0;
+        let captures = 0;
+
+        for (let i = 0; i < sides.length; i++) {
+            const adjacentCard = adjacentCards[i];
+            if (adjacentCard && adjacentCard.owner !== this.id) {
+                const myRank = card.getOriginalRank(sides[i]);
+                const theirRank = adjacentCard.getOriginalRank(this.getOppositeSide(sides[i]));
                 
-                if (blocks > maxBlocks) {
-                    maxBlocks = blocks;
-                    bestBlockMove = {
-                        cardIndex,
-                        row: position.row,
-                        col: position.col
-                    };
+                if (myRank === theirRank) {
+                    sameCount++;
                 }
             }
         }
 
-        // If we found a blocking move, return it
-        if (bestBlockMove && maxBlocks > 0) {
-            return bestBlockMove;
+        // If 2 or more same matches, capture all adjacent
+        if (sameCount >= 2) {
+            for (const adjacentCard of adjacentCards) {
+                if (adjacentCard && adjacentCard.owner !== this.id) {
+                    captures++;
+                }
+            }
         }
 
-        // Priority 3: Random move as last resort
-        return this.getRandomMove(board);
+        return captures;
+    }
+
+    /**
+     * Check for Plus rule triggers
+     */
+    checkPlusRule(card, adjacent, board, row, col) {
+        const checks = [
+            { mySide: 'top', theirSide: 'bottom', card: adjacent.top },
+            { mySide: 'right', theirSide: 'left', card: adjacent.right },
+            { mySide: 'bottom', theirSide: 'top', card: adjacent.bottom },
+            { mySide: 'left', theirSide: 'right', card: adjacent.left }
+        ];
+
+        const sums = [];
+        const captureableCards = [];
+
+        for (const check of checks) {
+            if (check.card && check.card.owner !== this.id) {
+                const myRank = card.getOriginalRank(check.mySide);
+                const theirRank = check.card.getOriginalRank(check.theirSide);
+                const sum = myRank + theirRank;
+                
+                sums.push(sum);
+                captureableCards.push(check.card);
+            }
+        }
+
+        // Check for matching sums
+        const sumCounts = {};
+        sums.forEach(sum => {
+            sumCounts[sum] = (sumCounts[sum] || 0) + 1;
+        });
+
+        let captures = 0;
+        for (const count of Object.values(sumCounts)) {
+            if (count >= 2) {
+                captures = captureableCards.length; // All adjacent cards if plus triggers
+                break;
+            }
+        }
+
+        return captures;
+    }
+
+    /**
+     * Estimate potential combo captures
+     */
+    estimateComboCaptures(board, card, row, col, elementalRuleActive) {
+        // Simplified combo estimation - check if captured cards could capture others
+        let comboEstimate = 0;
+        const adjacent = board.getAdjacentCards(row, col);
+        
+        for (const adjacentCard of Object.values(adjacent)) {
+            if (adjacentCard && adjacentCard.owner !== this.id) {
+                // If we capture this card, check if it could capture others
+                const adjacentPos = this.findCardPosition(board, adjacentCard);
+                if (adjacentPos) {
+                    const secondaryAdjacent = board.getAdjacentCards(adjacentPos.row, adjacentPos.col);
+                    for (const secondaryCard of Object.values(secondaryAdjacent)) {
+                        if (secondaryCard && secondaryCard.owner !== this.id) {
+                            comboEstimate += 0.5; // Partial score for potential combo
+                        }
+                    }
+                }
+            }
+        }
+        
+        return comboEstimate;
+    }
+
+    /**
+     * Evaluate strategic positioning value
+     */
+    evaluateStrategicPosition(board, card, row, col, elementalRuleActive) {
+        let score = 0;
+
+        // Center positions are generally better
+        if (row === 1 && col === 1) score += 3;
+        else if ((row === 1 || col === 1) && !(row === 1 && col === 1)) score += 2;
+
+        // Corner positions can be good for defense
+        if ((row === 0 || row === 2) && (col === 0 || col === 2)) score += 1;
+
+        // Bonus for elemental square matching
+        if (elementalRuleActive) {
+            const squareElement = board.getSquareElement(row, col);
+            if (card.element === squareElement) {
+                score += 4; // Good bonus for element matching
+            } else if (card.element !== 'None' && squareElement !== 'None') {
+                score -= 2; // Penalty for element mismatch
+            }
+        }
+
+        return score;
+    }
+
+    /**
+     * Evaluate protection value (how well this move protects our cards)
+     */
+    evaluateProtection(board, card, row, col, elementalRuleActive) {
+        const blocks = this.countPotentialBlocks(board, card, row, col, elementalRuleActive);
+        return blocks;
+    }
+
+    /**
+     * Evaluate card strength (average of all ranks)
+     */
+    evaluateCardStrength(card) {
+        const ranks = card.originalRanks;
+        return (ranks.top + ranks.right + ranks.bottom + ranks.left) / 4;
+    }
+
+    /**
+     * Evaluate current board state
+     */
+    evaluateBoardState(board) {
+        const emptyPositions = board.getEmptyPositions();
+        const totalPositions = 9;
+        const filledPositions = totalPositions - emptyPositions.length;
+        
+        return {
+            early: filledPositions <= 3,
+            middle: filledPositions > 3 && filledPositions <= 6,
+            late: filledPositions > 6
+        };
+    }
+
+    /**
+     * Helper method to find card position on board
+     */
+    findCardPosition(board, targetCard) {
+        for (let row = 0; row < 3; row++) {
+            for (let col = 0; col < 3; col++) {
+                if (board.getCard(row, col) === targetCard) {
+                    return { row, col };
+                }
+            }
+        }
+        return null;
+    }
+
+    /**
+     * Get opposite side for rank comparison
+     */
+    getOppositeSide(side) {
+        const opposites = {
+            'top': 'bottom',
+            'bottom': 'top',
+            'left': 'right',
+            'right': 'left'
+        };
+        return opposites[side];
     }
 
     countPotentialCaptures(board, card, row, col, elementalRuleActive = false) {

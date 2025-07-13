@@ -1,14 +1,18 @@
 class Card {
     constructor(top, right, bottom, left, owner, element = 'None') {
-        this.originalRanks = {
+        // Freeze originalRanks to ensure immutability
+        this.originalRanks = Object.freeze({
             top: this.normalizeRank(top),
             right: this.normalizeRank(right),
             bottom: this.normalizeRank(bottom),
             left: this.normalizeRank(left)
-        };
+        });
         this.ranks = { ...this.originalRanks };
         this.owner = owner;
         this.element = element;
+        
+        // Cache for effective ranks to avoid recalculation
+        this._effectiveRanksCache = new Map();
     }
 
     normalizeRank(rank) {
@@ -29,6 +33,12 @@ class Card {
             return this.originalRanks[side];
         }
 
+        // Use cache for performance optimization
+        const cacheKey = `${side}-${boardSquareElement}-${elementalRuleActive}`;
+        if (this._effectiveRanksCache.has(cacheKey)) {
+            return this._effectiveRanksCache.get(cacheKey);
+        }
+
         let rank = this.originalRanks[side];
         
         if (this.element === boardSquareElement) {
@@ -37,7 +47,44 @@ class Card {
             rank -= 1;
         }
         
-        return Math.max(0, rank);
+        const effectiveRank = Math.max(0, rank);
+        this._effectiveRanksCache.set(cacheKey, effectiveRank);
+        return effectiveRank;
+    }
+
+    /**
+     * Get all effective ranks for all sides at once
+     * @param {string} boardSquareElement - The element of the board square
+     * @param {boolean} elementalRuleActive - Whether elemental rule is active
+     * @returns {Object} Object with all effective ranks
+     */
+    getAllEffectiveRanks(boardSquareElement, elementalRuleActive = false) {
+        return {
+            top: this.getEffectiveRank('top', boardSquareElement, elementalRuleActive),
+            right: this.getEffectiveRank('right', boardSquareElement, elementalRuleActive),
+            bottom: this.getEffectiveRank('bottom', boardSquareElement, elementalRuleActive),
+            left: this.getEffectiveRank('left', boardSquareElement, elementalRuleActive)
+        };
+    }
+
+    /**
+     * Check if this card's rank on a given side can beat another rank
+     * @param {string} side - The side to check
+     * @param {number} opponentRank - The opponent's rank to compare against
+     * @param {string} boardSquareElement - The element of the board square
+     * @param {boolean} elementalRuleActive - Whether elemental rule is active
+     * @returns {boolean} True if this card wins
+     */
+    canBeat(side, opponentRank, boardSquareElement, elementalRuleActive = false) {
+        const myRank = this.getEffectiveRank(side, boardSquareElement, elementalRuleActive);
+        return myRank > opponentRank;
+    }
+
+    /**
+     * Clear the effective ranks cache (useful when element changes)
+     */
+    clearEffectiveRanksCache() {
+        this._effectiveRanksCache.clear();
     }
 
     changeOwner(newOwner) {

@@ -113,7 +113,7 @@ async function customRulesConfiguration() {
 }
 
 async function startMenu() {
-    console.log('\n=== Triple Triad v0.7 ===');
+    console.log('\n=== Triple Triad v0.8 ===');
     console.log('1. Play against AI (Basic rules only)');
     console.log('2. Play against AI (Open + Random)');
     console.log('3. Play against AI (Elemental)');

@@ -44,10 +44,11 @@ class Board {
             left: null
         };
 
-        if (row > 0) adjacent.top = this.getCard(row - 1, col);
-        if (col < 2) adjacent.right = this.getCard(row, col + 1);
-        if (row < 2) adjacent.bottom = this.getCard(row + 1, col);
-        if (col > 0) adjacent.left = this.getCard(row, col - 1);
+        // Direct grid access for better performance
+        if (row > 0) adjacent.top = this.grid[row - 1][col];
+        if (col < 2) adjacent.right = this.grid[row][col + 1];
+        if (row < 2) adjacent.bottom = this.grid[row + 1][col];
+        if (col > 0) adjacent.left = this.grid[row][col - 1];
 
         return adjacent;
     }
@@ -55,9 +56,9 @@ class Board {
     countCardsByOwner() {
         const count = {};
         
-        for (let row = 0; row < 3; row++) {
-            for (let col = 0; col < 3; col++) {
-                const card = this.grid[row][col];
+        // Flatten grid iteration for better performance
+        for (const row of this.grid) {
+            for (const card of row) {
                 if (card) {
                     count[card.owner] = (count[card.owner] || 0) + 1;
                 }

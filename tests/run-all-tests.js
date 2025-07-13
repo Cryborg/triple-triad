@@ -12,7 +12,8 @@ const tests = [
     { name: 'Tests avancés Combo v0.5', file: 'test-v0-5-advanced.js', version: 'v0.5' },
     { name: 'Mort Subite v0.6', file: 'test-v0-6.js', version: 'v0.6' },
     { name: 'Règles d\'échange v0.6', file: 'test-v0-6-trade-rules.js', version: 'v0.6' },
-    { name: 'Améliorations qualité v0.7', file: 'test-v0-7.js', version: 'v0.7' }
+    { name: 'Améliorations qualité v0.7', file: 'test-v0-7.js', version: 'v0.7' },
+    { name: 'Architecture & configurabilité v0.8', file: 'test-v0-8.js', version: 'v0.8' }
 ];
 
 async function runTest(testFile, testName) {
@@ -68,7 +69,7 @@ async function runAllTests() {
     
     if (successful === total) {
         console.log('\n🎉 SUCCÈS TOTAL ! Tous les tests sont passés !');
-        console.log('Triple Triad v0.7 est entièrement fonctionnel ! 🎯');
+        console.log('Triple Triad v0.8 est entièrement fonctionnel ! 🎯');
     } else {
         console.log(`\n⚠️  ${total - successful} test(s) ont échoué.`);
     }
@@ -126,7 +127,8 @@ async function runAllTests() {
         'v0.4': { name: 'v0.4 - Règles spéciales', features: ['Same', 'Plus', 'Same Wall'] },
         'v0.5': { name: 'v0.5 - Règle Combo', features: ['Combo (chaînes de captures)'] },
         'v0.6': { name: 'v0.6 - Mort Subite & Échanges', features: ['Sudden Death', 'Trade Rules (One/Diff/Direct/All)'] },
-        'v0.7': { name: 'v0.7 - Qualité & Robustesse', features: ['Improved AI', 'Enhanced Display', 'Better UX', 'Error Handling'] }
+        'v0.7': { name: 'v0.7 - Qualité & Robustesse', features: ['Improved AI', 'Enhanced Display', 'Better UX', 'Error Handling'] },
+        'v0.8': { name: 'v0.8 - Architecture & Configurabilité', features: ['Optimized Performance', 'Flexible Configuration', 'Advanced AI Strategy', 'JSDoc Documentation'] }
     };
     
     sortedVersions.forEach(version => {

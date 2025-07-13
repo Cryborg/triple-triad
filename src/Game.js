@@ -4,16 +4,164 @@ const Player = require('./Player');
 const CardDatabaseV3 = require('./CardDatabaseV3');
 
 class Game {
-    constructor(rules = { open: false, random: false, elemental: false, same: false, plus: false, sameWall: false, combo: false, suddenDeath: false, tradeRule: 'One' }) {
+    /**
+     * Create a new Triple Triad game instance
+     * @param {Object} player1Cards - Cards for player 1 (optional, will use database if not provided)
+     * @param {Object} player2Cards - Cards for player 2 (optional, will use database if not provided)  
+     * @param {Object} config - Game configuration object
+     * @param {Object} config.rules - Rules configuration
+     * @param {boolean} config.rules.open - Open rule (hands visible)
+     * @param {boolean} config.rules.random - Random rule (random card selection)
+     * @param {boolean} config.rules.elemental - Elemental rule
+     * @param {boolean} config.rules.same - Same rule
+     * @param {boolean} config.rules.plus - Plus rule
+     * @param {boolean} config.rules.sameWall - Same Wall rule
+     * @param {boolean} config.rules.combo - Combo rule
+     * @param {boolean} config.rules.suddenDeath - Sudden Death rule
+     * @param {string} config.tradeRule - Trade rule ('One', 'Diff', 'Direct', 'All')
+     * @param {string} config.player1Type - Player 1 type ('human' or 'ai')
+     * @param {string} config.player2Type - Player 2 type ('human' or 'ai')
+     */
+    constructor(player1Cards = null, player2Cards = null, config = {}) {
+        // Handle legacy constructor calls (rules object passed directly)
+        if (typeof player1Cards === 'object' && player1Cards !== null && !Array.isArray(player1Cards) && !player1Cards.hasOwnProperty('top')) {
+            // Legacy call: new Game(rules)
+            config = player1Cards;
+            player1Cards = null;
+            player2Cards = null;
+        }
+
+        // Default configuration
+        const defaultConfig = {
+            rules: {
+                open: false,
+                random: false,
+                elemental: false,
+                same: false,
+                plus: false,
+                sameWall: false,
+                combo: false,
+                suddenDeath: false
+            },
+            tradeRule: 'One',
+            player1Type: 'human',
+            player2Type: 'ai'
+        };
+
+        // Handle direct rules object (legacy compatibility)
+        if (config.hasOwnProperty('open') || config.hasOwnProperty('random') || config.hasOwnProperty('elemental')) {
+            // Legacy call with direct rules object
+            config = { rules: config, tradeRule: config.tradeRule || 'One' };
+        }
+
+        // Merge with provided configuration
+        this.config = this.mergeConfig(defaultConfig, config);
+        this.rules = { ...this.config.rules, tradeRule: this.config.tradeRule };
+        
+        // Validate configuration
+        this.validateConfiguration();
+
         this.board = new Board();
         this.players = {
-            BLUE: new Player('BLUE', false),
-            RED: new Player('RED', true)
+            BLUE: new Player('BLUE', this.config.player1Type === 'ai'),
+            RED: new Player('RED', this.config.player2Type === 'ai')
         };
         this.currentPlayer = null;
         this.turnCount = 0;
         this.suddenDeathCounter = 0;
-        this.rules = rules;
+        
+        // Store custom cards if provided
+        this.customPlayer1Cards = player1Cards;
+        this.customPlayer2Cards = player2Cards;
+    }
+
+    /**
+     * Deep merge configuration objects
+     */
+    mergeConfig(defaultConfig, userConfig) {
+        const merged = { ...defaultConfig };
+        
+        if (userConfig.rules) {
+            merged.rules = { ...defaultConfig.rules, ...userConfig.rules };
+        }
+        
+        if (userConfig.tradeRule) merged.tradeRule = userConfig.tradeRule;
+        if (userConfig.player1Type) merged.player1Type = userConfig.player1Type;
+        if (userConfig.player2Type) merged.player2Type = userConfig.player2Type;
+        
+        return merged;
+    }
+
+    /**
+     * Validate game configuration
+     */
+    validateConfiguration() {
+        const validTradeRules = ['One', 'Diff', 'Direct', 'All'];
+        const validPlayerTypes = ['human', 'ai'];
+        
+        if (!validTradeRules.includes(this.config.tradeRule)) {
+            throw new Error(`Invalid trade rule: ${this.config.tradeRule}. Must be one of: ${validTradeRules.join(', ')}`);
+        }
+        
+        if (!validPlayerTypes.includes(this.config.player1Type)) {
+            throw new Error(`Invalid player1Type: ${this.config.player1Type}. Must be 'human' or 'ai'`);
+        }
+        
+        if (!validPlayerTypes.includes(this.config.player2Type)) {
+            throw new Error(`Invalid player2Type: ${this.config.player2Type}. Must be 'human' or 'ai'`);
+        }
+        
+        // Validate rule dependencies
+        if (this.config.rules.combo && !this.config.rules.same && !this.config.rules.plus) {
+            console.warn('Warning: Combo rule is active but neither Same nor Plus rules are active. Combo will have no effect.');
+        }
+        
+        if (this.config.rules.sameWall && !this.config.rules.same) {
+            console.warn('Warning: Same Wall rule is active but Same rule is not active. Same Wall will have no effect.');
+        }
+    }
+
+    /**
+     * Create a game with preset rule configurations
+     * @param {string} preset - Preset name
+     * @param {Object} overrides - Additional configuration overrides
+     * @returns {Game} New game instance
+     */
+    static createWithPreset(preset, overrides = {}) {
+        const presets = {
+            'basic': { rules: {} },
+            'elemental': { rules: { elemental: true } },
+            'advanced': { rules: { same: true, plus: true, combo: true } },
+            'complete': { 
+                rules: { 
+                    open: true, 
+                    random: true, 
+                    elemental: true, 
+                    same: true, 
+                    plus: true, 
+                    sameWall: true, 
+                    combo: true, 
+                    suddenDeath: true 
+                },
+                tradeRule: 'All'
+            },
+            'tournament': {
+                rules: {
+                    elemental: true,
+                    same: true,
+                    plus: true,
+                    combo: true
+                },
+                tradeRule: 'Diff'
+            }
+        };
+
+        if (!presets[preset]) {
+            throw new Error(`Unknown preset: ${preset}. Available presets: ${Object.keys(presets).join(', ')}`);
+        }
+
+        const config = { ...presets[preset], ...overrides };
+        return new Game(null, null, config);
     }
 
     initialize() {
@@ -23,7 +171,7 @@ class Game {
         this.setupPlayerCollections();
         this.distributeCards();
         this.currentPlayer = Math.random() < 0.5 ? 'BLUE' : 'RED';
-        console.log(`\n=== Triple Triad v0.7 ===`);
+        console.log(`\n=== Triple Triad v0.8 ===`);
         console.log(`Active Rules: ${this.formatActiveRules()}`);
         console.log(`Trade Rule: ${this.rules.tradeRule}`);
         console.log(`${this.currentPlayer} starts the game!\n`);
@@ -130,7 +278,7 @@ class Game {
         if (player.isAI) {
             console.log(`\n=== Turn ${this.turnCount + 1}/9 - ${this.currentPlayer} (AI) ===`);
             const opponentHand = this.rules.open ? opponent.hand : null;
-            const move = player.getSmartMove(this.board, opponentHand, this.rules.elemental);
+            const move = player.getSmartMove(this.board, opponentHand, this.rules.elemental, this.rules);
             
             if (move) {
                 const card = player.getCard(move.cardIndex);
@@ -151,16 +299,30 @@ class Game {
         return true;
     }
 
+    /**
+     * Make a move in the game
+     * @param {number} cardIndex - Index of card in player's hand (0-4)
+     * @param {number} row - Row position on board (0-2)
+     * @param {number} col - Column position on board (0-2)
+     * @returns {boolean} True if move was successful, false otherwise
+     */
     makeMove(cardIndex, row, col) {
+        // Validate game state
+        if (this.checkGameEnd()) {
+            console.error('Invalid move: Game has already ended!');
+            return false;
+        }
+
         const player = this.players[this.currentPlayer];
         
-        if (!this.board.isPositionEmpty(row, col)) {
-            console.error('Invalid move: This position is already occupied!');
+        // Validate inputs
+        const validation = this.validateMoveInputs(cardIndex, row, col, player);
+        if (!validation.valid) {
+            console.error(`Invalid move: ${validation.error}`);
             return false;
         }
         
         try {
-
             const card = player.playCard(cardIndex);
             this.board.placeCard(card, row, col);
             
@@ -171,11 +333,54 @@ class Game {
             
             return true;
         } catch (error) {
-            console.error(`Invalid move: ${error.message}`);
+            console.error(`Move failed: ${error.message}`);
             return false;
         }
     }
 
+    /**
+     * Validate move inputs
+     * @param {number} cardIndex - Card index to validate
+     * @param {number} row - Row to validate
+     * @param {number} col - Column to validate
+     * @param {Player} player - Player making the move
+     * @returns {Object} Validation result with valid flag and error message
+     */
+    validateMoveInputs(cardIndex, row, col, player) {
+        // Check if inputs are numbers
+        if (!Number.isInteger(cardIndex) || !Number.isInteger(row) || !Number.isInteger(col)) {
+            return { valid: false, error: 'Card index, row, and column must be integers' };
+        }
+
+        // Check card index bounds
+        if (cardIndex < 0 || cardIndex >= player.hand.length) {
+            return { valid: false, error: `Card index must be between 0 and ${player.hand.length - 1}` };
+        }
+
+        // Check position bounds
+        if (row < 0 || row > 2 || col < 0 || col > 2) {
+            return { valid: false, error: 'Position must be between (0,0) and (2,2)' };
+        }
+
+        // Check if position is empty
+        if (!this.board.isPositionEmpty(row, col)) {
+            return { valid: false, error: `Position (${row}, ${col}) is already occupied` };
+        }
+
+        // Check if player has cards
+        if (player.hand.length === 0) {
+            return { valid: false, error: 'Player has no cards to play' };
+        }
+
+        return { valid: true };
+    }
+
+    /**
+     * Resolve all captures triggered by placing a card
+     * @param {Card} placedCard - The card that was just placed
+     * @param {number} row - Row where the card was placed
+     * @param {number} col - Column where the card was placed
+     */
     resolveCaptures(placedCard, row, col) {
         const cardsFlippedThisTurn = new Set();
         const comboCheckQueue = [];
@@ -248,6 +453,13 @@ class Game {
         ];
     }
 
+    /**
+     * Check for Same and Plus rule triggers
+     * @param {Card} placedCard - The card that was placed
+     * @param {number} row - Row position
+     * @param {number} col - Column position
+     * @returns {Array} Array of captured cards
+     */
     checkSpecialRules(placedCard, row, col) {
         const adjacentCards = this.getAdjacentCardsInfo(row, col);
         const captures = [];
@@ -335,6 +547,12 @@ class Game {
         return captures;
     }
 
+    /**
+     * Process combo chain reactions from captured cards
+     * @param {Array} comboCheckQueue - Queue of cards to check for combo triggers
+     * @param {Set} cardsFlippedThisTurn - Set of all cards flipped this turn
+     * @param {string} currentOwner - Owner of the cards doing the capturing
+     */
     processComboChain(comboCheckQueue, cardsFlippedThisTurn, currentOwner) {
         let comboCount = 0;
         
@@ -396,6 +614,13 @@ class Game {
         }
     }
 
+    /**
+     * Get cards captured by basic rank comparison rules
+     * @param {Card} placedCard - The card that was placed
+     * @param {number} row - Row position
+     * @param {number} col - Column position
+     * @returns {Array} Array of captured cards
+     */
     getBasicCaptures(placedCard, row, col) {
         const captures = [];
         const adjacentCards = this.getAdjacentCardsInfo(row, col);
