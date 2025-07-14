@@ -1,9 +1,16 @@
+const AIPlayerStrategy = require('./AIPlayerStrategy');
+
 class Player {
     constructor(id, isAI = false) {
         this.id = id;
         this.hand = [];
         this.collection = [];
         this.isAI = isAI;
+        
+        // Initialize AI strategy if this is an AI player
+        if (this.isAI) {
+            this.aiStrategy = new AIPlayerStrategy();
+        }
     }
 
     addCardToHand(card) {
@@ -103,37 +110,32 @@ class Player {
         };
     }
 
+    /**
+     * Get the best move using advanced AI strategy
+     * @param {Board} board - The game board
+     * @param {Array} opponentHand - Opponent's hand (if open rule active)
+     * @param {boolean} elementalRuleActive - Whether elemental rule is active
+     * @param {Object} gameRules - Game rules configuration
+     * @returns {Object} Best move {cardIndex, row, col, score}
+     */
     getSmartMove(board, opponentHand = null, elementalRuleActive = false, gameRules = {}) {
         if (!this.isAI || this.hand.length === 0) {
             return null;
         }
 
-        const emptyPositions = board.getEmptyPositions();
-        if (emptyPositions.length === 0) {
-            return null;
+        if (!this.aiStrategy) {
+            // Fallback to random move if AI strategy not initialized
+            return this.getRandomMove(board);
         }
 
-        let bestMove = null;
-        let maxScore = -1;
-
-        // Evaluate all possible moves with sophisticated scoring
-        for (let cardIndex = 0; cardIndex < this.hand.length; cardIndex++) {
-            const card = this.hand[cardIndex];
-            
-            for (const position of emptyPositions) {
-                const score = this.evaluateMove(board, card, position.row, position.col, elementalRuleActive, gameRules);
-                
-                if (score > maxScore) {
-                    maxScore = score;
-                    bestMove = {
-                        cardIndex,
-                        row: position.row,
-                        col: position.col,
-                        score: score
-                    };
-                }
-            }
-        }
+        // Use the advanced AI strategy
+        const bestMove = this.aiStrategy.chooseBestMove(
+            board, 
+            this.hand, 
+            opponentHand, 
+            elementalRuleActive, 
+            gameRules
+        );
 
         return bestMove || this.getRandomMove(board);
     }

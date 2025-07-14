@@ -1,5 +1,15 @@
 class Card {
-    constructor(top, right, bottom, left, owner, element = 'None') {
+    /**
+     * Create a new Card instance
+     * @param {number|string} top - Top rank (can be number 1-9 or 'A' for 10)
+     * @param {number|string} right - Right rank
+     * @param {number|string} bottom - Bottom rank  
+     * @param {number|string} left - Left rank
+     * @param {string} owner - Card owner ('BLUE', 'RED', etc.)
+     * @param {string} element - Card element (default: 'None')
+     * @param {Object} options - Optional card data (id, name)
+     */
+    constructor(top, right, bottom, left, owner, element = 'None', options = {}) {
         // Freeze originalRanks to ensure immutability
         this.originalRanks = Object.freeze({
             top: this.normalizeRank(top),
@@ -11,8 +21,33 @@ class Card {
         this.owner = owner;
         this.element = element;
         
+        // Optional card metadata from JSON
+        this.id = options.id || null;
+        this.name = options.name || null;
+        
         // Cache for effective ranks to avoid recalculation
         this._effectiveRanksCache = new Map();
+    }
+
+    /**
+     * Create a Card from JSON data
+     * @param {Object} cardData - Card data from JSON
+     * @param {string} owner - Card owner
+     * @returns {Card} New Card instance
+     */
+    static fromJSON(cardData, owner) {
+        return new Card(
+            cardData.ranks[0],
+            cardData.ranks[1],
+            cardData.ranks[2],
+            cardData.ranks[3],
+            owner,
+            cardData.element || 'None',
+            {
+                id: cardData.id,
+                name: cardData.name
+            }
+        );
     }
 
     normalizeRank(rank) {

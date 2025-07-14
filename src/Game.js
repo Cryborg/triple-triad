@@ -1,9 +1,10 @@
 const Card = require('./Card');
 const Board = require('./Board');
 const Player = require('./Player');
-const CardDatabaseV3 = require('./CardDatabaseV3');
+const CardLoader = require('./CardLoader');
+const EventEmitter = require('./EventEmitter');
 
-class Game {
+class Game extends EventEmitter {
     /**
      * Create a new Triple Triad game instance
      * @param {Object} player1Cards - Cards for player 1 (optional, will use database if not provided)
@@ -23,6 +24,8 @@ class Game {
      * @param {string} config.player2Type - Player 2 type ('human' or 'ai')
      */
     constructor(player1Cards = null, player2Cards = null, config = {}) {
+        super(); // Initialize EventEmitter
+        
         // Handle legacy constructor calls (rules object passed directly)
         if (typeof player1Cards === 'object' && player1Cards !== null && !Array.isArray(player1Cards) && !player1Cards.hasOwnProperty('top')) {
             // Legacy call: new Game(rules)
@@ -171,10 +174,20 @@ class Game {
         this.setupPlayerCollections();
         this.distributeCards();
         this.currentPlayer = Math.random() < 0.5 ? 'BLUE' : 'RED';
-        console.log(`\n=== Triple Triad v0.8 ===`);
+        console.log(`\n=== Triple Triad v0.9 ===`);
         console.log(`Active Rules: ${this.formatActiveRules()}`);
         console.log(`Trade Rule: ${this.rules.tradeRule}`);
         console.log(`${this.currentPlayer} starts the game!\n`);
+        
+        // Emit game started event
+        this.emit('game:started', {
+            rules: this.rules,
+            startingPlayer: this.currentPlayer,
+            players: {
+                BLUE: { isAI: this.players.BLUE.isAI, hand: this.players.BLUE.hand.length },
+                RED: { isAI: this.players.RED.isAI, hand: this.players.RED.hand.length }
+            }
+        });
     }
 
     formatActiveRules() {
@@ -191,31 +204,20 @@ class Game {
         return activeRules.length > 0 ? activeRules.join(', ') : 'Basic rules only';
     }
 
+    /**
+     * Initialize card collections for both players using external card data
+     */
     setupPlayerCollections() {
-        const blueCollection = CardDatabaseV3.getPlayerCollection('BLUE');
-        const redCollection = CardDatabaseV3.getPlayerCollection('RED');
+        const blueCollection = CardLoader.getPlayerCollection(20);
+        const redCollection = CardLoader.getPlayerCollection(20);
         
         blueCollection.forEach(cardData => {
-            const card = new Card(
-                cardData.ranks[0],
-                cardData.ranks[1],
-                cardData.ranks[2],
-                cardData.ranks[3],
-                'BLUE',
-                cardData.element
-            );
+            const card = Card.fromJSON(cardData, 'BLUE');
             this.players.BLUE.addCardToCollection(card);
         });
         
         redCollection.forEach(cardData => {
-            const card = new Card(
-                cardData.ranks[0],
-                cardData.ranks[1],
-                cardData.ranks[2],
-                cardData.ranks[3],
-                'RED',
-                cardData.element
-            );
+            const card = Card.fromJSON(cardData, 'RED');
             this.players.RED.addCardToCollection(card);
         });
     }
@@ -236,12 +238,12 @@ class Game {
         const redCards = [...this.players.RED.collection].sort(() => Math.random() - 0.5).slice(0, 5);
         
         blueCards.forEach(card => {
-            const handCard = new Card(card.originalRanks.top, card.originalRanks.right, card.originalRanks.bottom, card.originalRanks.left, 'BLUE', card.element);
+            const handCard = new Card(card.originalRanks.top, card.originalRanks.right, card.originalRanks.bottom, card.originalRanks.left, 'BLUE', card.element, { id: card.id, name: card.name });
             this.players.BLUE.addCardToHand(handCard);
         });
         
         redCards.forEach(card => {
-            const handCard = new Card(card.originalRanks.top, card.originalRanks.right, card.originalRanks.bottom, card.originalRanks.left, 'RED', card.element);
+            const handCard = new Card(card.originalRanks.top, card.originalRanks.right, card.originalRanks.bottom, card.originalRanks.left, 'RED', card.element, { id: card.id, name: card.name });
             this.players.RED.addCardToHand(handCard);
         });
         
@@ -253,12 +255,12 @@ class Game {
         const aiChosenCards = this.players.RED.collection.slice(0, 5);
         
         chosenCards.forEach(card => {
-            const handCard = new Card(card.originalRanks.top, card.originalRanks.right, card.originalRanks.bottom, card.originalRanks.left, 'BLUE', card.element);
+            const handCard = new Card(card.originalRanks.top, card.originalRanks.right, card.originalRanks.bottom, card.originalRanks.left, 'BLUE', card.element, { id: card.id, name: card.name });
             this.players.BLUE.addCardToHand(handCard);
         });
         
         aiChosenCards.forEach(card => {
-            const handCard = new Card(card.originalRanks.top, card.originalRanks.right, card.originalRanks.bottom, card.originalRanks.left, 'RED', card.element);
+            const handCard = new Card(card.originalRanks.top, card.originalRanks.right, card.originalRanks.bottom, card.originalRanks.left, 'RED', card.element, { id: card.id, name: card.name });
             this.players.RED.addCardToHand(handCard);
         });
         
@@ -268,6 +270,14 @@ class Game {
     playTurn() {
         const player = this.players[this.currentPlayer];
         const opponent = this.players[this.currentPlayer === 'BLUE' ? 'RED' : 'BLUE'];
+        
+        // Emit turn started event
+        this.emit('turn:started', {
+            currentPlayer: this.currentPlayer,
+            turnCount: this.turnCount,
+            isAI: player.isAI,
+            cardsRemaining: player.hand.length
+        });
         
         if (this.rules.open) {
             console.log(`\n=== Open Rule: Both hands visible ===`);
@@ -325,6 +335,20 @@ class Game {
         try {
             const card = player.playCard(cardIndex);
             this.board.placeCard(card, row, col);
+            
+            // Emit card placed event
+            this.emit('card:placed', {
+                card: {
+                    ranks: card.originalRanks,
+                    element: card.element,
+                    owner: card.owner,
+                    id: card.id,
+                    name: card.name
+                },
+                position: { row, col },
+                player: this.currentPlayer,
+                turnCount: this.turnCount
+            });
             
             this.resolveCaptures(card, row, col);
             
@@ -648,10 +672,44 @@ class Game {
         return captures;
     }
 
+    /**
+     * Apply final captures and emit events
+     * @param {Set} cardsFlippedThisTurn - Set of cards to capture
+     * @param {string} newOwner - New owner for the cards
+     */
     applyFinalCaptures(cardsFlippedThisTurn, newOwner) {
         cardsFlippedThisTurn.forEach(card => {
+            const oldOwner = card.owner;
             card.changeOwner(newOwner);
+            
+            // Emit card captured event
+            this.emit('card:captured', {
+                card: {
+                    ranks: card.originalRanks,
+                    element: card.element,
+                    id: card.id,
+                    name: card.name
+                },
+                oldOwner: oldOwner,
+                newOwner: newOwner,
+                captureRule: this.determineCaptureRule(),
+                turnCount: this.turnCount
+            });
         });
+    }
+
+    /**
+     * Determine which rule caused the capture (for event emission)
+     * This is a simplified version - in a real implementation you'd track this more precisely
+     * @returns {string} The rule that caused the capture
+     */
+    determineCaptureRule() {
+        // This is a simplified implementation
+        // In a full implementation, we'd track the actual rule that triggered each capture
+        if (this.rules.same) return 'Same';
+        if (this.rules.plus) return 'Plus';
+        if (this.rules.combo) return 'Combo';
+        return 'Basic';
     }
 
     checkGameEnd() {
@@ -678,11 +736,29 @@ class Game {
             console.log('BLUE wins!');
             this.applyTradeRule(bluePlayer, redPlayer, blueScore, redScore);
             this.suddenDeathCounter = 0;
+            
+            // Emit game ended event
+            this.emit('game:ended', {
+                result: 'WINNER_DETERMINED',
+                winner: 'BLUE',
+                scores: { BLUE: blueScore, RED: redScore },
+                totalTurns: this.turnCount
+            });
+            
             return { result: 'WINNER_DETERMINED', winner: 'BLUE' };
         } else if (redScore > blueScore) {
             console.log('RED wins!');
             this.applyTradeRule(redPlayer, bluePlayer, redScore, blueScore);
             this.suddenDeathCounter = 0;
+            
+            // Emit game ended event
+            this.emit('game:ended', {
+                result: 'WINNER_DETERMINED',
+                winner: 'RED',
+                scores: { BLUE: blueScore, RED: redScore },
+                totalTurns: this.turnCount
+            });
+            
             return { result: 'WINNER_DETERMINED', winner: 'RED' };
         } else {
             if (this.rules.suddenDeath) {
@@ -690,14 +766,40 @@ class Game {
                 
                 if (this.suddenDeathCounter < 5) {
                     console.log(`\nMort Subite! Nouvelle partie... (${this.suddenDeathCounter}/5)`);
+                    
+                    // Emit sudden death triggered event
+                    this.emit('suddenDeath:triggered', {
+                        attempt: this.suddenDeathCounter,
+                        maxAttempts: 5
+                    });
+                    
                     this.initializeSuddenDeath();
                     return { result: 'SUDDEN_DEATH_CONTINUE' };
                 } else {
                     console.log('\nÉgalité finale après Mort Subite!');
+                    
+                    // Emit game ended event for final draw
+                    this.emit('game:ended', {
+                        result: 'FINAL_DRAW',
+                        winner: null,
+                        scores: { BLUE: blueScore, RED: redScore },
+                        totalTurns: this.turnCount,
+                        suddenDeathAttempts: this.suddenDeathCounter
+                    });
+                    
                     return { result: 'FINAL_DRAW' };
                 }
             } else {
                 console.log('\nC\'est une égalité!');
+                
+                // Emit game ended event for draw
+                this.emit('game:ended', {
+                    result: 'DRAW',
+                    winner: null,
+                    scores: { BLUE: blueScore, RED: redScore },
+                    totalTurns: this.turnCount
+                });
+                
                 return { result: 'DRAW' };
             }
         }
@@ -747,6 +849,14 @@ class Game {
         if (loserPlayer.removeCardFromCollection(chosenCard)) {
             winnerPlayer.addCardToCollection(chosenCard);
             console.log(`${winnerPlayer.id} takes ${chosenCard.toString()} from ${loserPlayer.id}`);
+            
+            // Emit trade applied event
+            this.emit('trade:applied', {
+                rule: 'One',
+                winner: winnerPlayer.id,
+                loser: loserPlayer.id,
+                cardsTraded: [chosenCard.toString()]
+            });
         }
     }
 

@@ -110,6 +110,35 @@ class Board {
         return positions;
     }
 
+    /**
+     * Get the number of empty squares on the board
+     * @returns {number} Number of empty squares
+     */
+    getEmptySquareCount() {
+        let count = 0;
+        for (let row = 0; row < 3; row++) {
+            for (let col = 0; col < 3; col++) {
+                if (this.grid[row][col] === null) {
+                    count++;
+                }
+            }
+        }
+        return count;
+    }
+
+    /**
+     * Get the element of a specific square
+     * @param {number} row - Row position
+     * @param {number} col - Column position
+     * @returns {string} Element of the square ('None' if no element)
+     */
+    getSquareElement(row, col) {
+        if (!this.isValidPosition(row, col)) {
+            return 'None';
+        }
+        return this.elementalSquares[row][col] || 'None';
+    }
+
     initializeElementalSquares() {
         const elements = ['Fire', 'Ice', 'Thunder', 'Earth', 'Poison', 'Wind', 'Water', 'Holy'];
         const numberOfElementalSquares = Math.floor(Math.random() * 4) + 1;
