@@ -2,7 +2,13 @@ const Game = require('../src/Game');
 
 class TestGame extends Game {
     constructor(rules, testName) {
-        super(rules);
+        // v0.8 compatibility: convert rules to config format
+        const config = {
+            rules: rules,
+            player1Type: 'ai',
+            player2Type: 'ai'
+        };
+        super(null, null, config);
         this.violations = [];
         this.moveHistory = [];
         this.testName = testName;
@@ -21,18 +27,10 @@ class TestGame extends Game {
     initialize() {
         this.log(`Initialisation du test avec règles: ${JSON.stringify(this.rules)}`);
         
-        this.players.BLUE.isAI = true;
-        this.players.RED.isAI = true;
+        // Call parent initialize which handles everything
+        super.initialize();
         
-        if (this.rules.elemental) {
-            this.board.initializeElementalSquares();
-            this.log('Cases élémentaires initialisées');
-        }
-        
-        this.setupPlayerCollections();
-        this.distributeCards();
-        this.currentPlayer = Math.random() < 0.5 ? 'BLUE' : 'RED';
-        
+        // Just do our verification
         this.log('Vérification de l\'état initial...');
         this.verifyInitialState();
         
@@ -361,6 +359,16 @@ class TestGame extends Game {
         }
     }
 
+    getWinner() {
+        const counts = this.board.countCardsByOwner();
+        const blueScore = (counts.BLUE || 0) + this.players.BLUE.hand.length;
+        const redScore = (counts.RED || 0) + this.players.RED.hand.length;
+        
+        if (blueScore > redScore) return 'BLUE';
+        if (redScore > blueScore) return 'RED';
+        return 'DRAW';
+    }
+
     displayFinalReport() {
         console.log(`\n=== Rapport Final ${this.testName} ===`);
         console.log(`Tours joués: ${this.turnCount}`);
@@ -429,7 +437,7 @@ async function runComprehensiveTests() {
             let turnCount = 0;
             let gameCompleted = false;
             
-            while (!game.isGameOver() && turnCount < 10) {
+            while (!game.checkGameEnd() && turnCount < 10) {
                 if (!game.playTurn()) {
                     console.error(`❌ Erreur lors du tour ${turnCount + 1}`);
                     break;
@@ -444,7 +452,7 @@ async function runComprehensiveTests() {
                 turnCount++;
             }
             
-            if (game.isGameOver()) {
+            if (game.checkGameEnd()) {
                 gameCompleted = true;
                 const winner = game.getWinner();
                 console.log(`🏆 ${winner === 'DRAW' ? 'Match nul' : winner + ' gagne'}`);
