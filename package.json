@@ -1,6 +1,6 @@
 {
   "name": "triple-triad",
-  "version": "0.6.0",
+  "version": "0.8.0",
   "description": "Implémentation du jeu Triple Triad avec règles avancées",
   "main": "src/main.js",
   "scripts": {

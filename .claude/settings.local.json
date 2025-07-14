@@ -8,7 +8,11 @@
       "Bash(rm:*)",
       "Bash(chmod:*)",
       "Bash(npm test)",
-      "Bash(npm run test:*)"
+      "Bash(npm run test:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(find:*)",
+      "Bash(ls:*)"
     ],
     "deny": []
   }
