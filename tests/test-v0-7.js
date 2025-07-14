@@ -250,8 +250,8 @@ runTest("Game - Messages console avec émojis et détails", () => {
     
     console.log = originalLog;
     
-    // Vérifier que l'initialisation contient des améliorations v0.7
-    if (output.includes('v0.7') && output.includes('Active Rules:')) {
+    // Vérifier que l'initialisation contient des améliorations v0.7 (maintenant v0.8)
+    if ((output.includes('v0.7') || output.includes('v0.8')) && output.includes('Active Rules:')) {
         console.log('     ✓ Messages d\'initialisation améliorés');
         return true;
     }
