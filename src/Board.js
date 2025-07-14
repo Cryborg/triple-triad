@@ -163,7 +163,7 @@ class Board {
         
         // Always show the card count
         const counts = this.countCardsByOwner();
-        console.log(`\nScore: \x1b[34mPlayer1\x1b[0m: ${counts['Player1'] || 0} - \x1b[31mPlayer2\x1b[0m: ${counts['Player2'] || 0}`);
+        console.log(`\nScore: \x1b[34mPlayer1\x1b[0m: ${counts['BLUE'] || 0} - \x1b[31mPlayer2\x1b[0m: ${counts['RED'] || 0}`);
         
         if (showElements) {
             console.log('\nElements: F=Fire, I=Ice, T=Thunder, E=Earth, P=Poison, W=Wind/Water, H=Holy');
